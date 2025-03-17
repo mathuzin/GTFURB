@@ -1,0 +1,979 @@
+{
+	"info": {
+		"_postman_id": "9513aa89-ec12-4986-89cc-6348ced39016",
+		"name": "Projeto esqueleto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25669722"
+	},
+	"item": [
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Aluno",
+					"item": [
+						{
+							"name": "Alterar senha",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"\",\r\n    \"senha\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/alunos/alterar-senha",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alunos",
+										"alterar-senha"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter todos os alunos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/alunos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alunos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar um aluno",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/alunos/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alunos",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar um aluno",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"criadoEm\": \"2023-05-31T17:08:48.529Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:08:48.529Z\",\r\n  \"nome\": \"string\",\r\n  \"professor\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"turmaId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"dataNascimento\": \"2023-05-31T17:08:48.529Z\",\r\n  \"email\": \"string\",\r\n  \"genero\": \"MASCULINO\",\r\n  \"turmaNome\": \"string\",\r\n  \"professorNome\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/alunos/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alunos",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter um aluno pelo id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/alunos/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alunos",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Usuário",
+					"item": [
+						{
+							"name": "Usuário logado",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/logado",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"logado"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar usuário",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"criadoEm\": \"2023-05-31T17:00:32.902Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:00:32.902Z\",\r\n  \"nome\": \"string\",\r\n  \"usuario\": \"string\",\r\n  \"senha\": \"string\",\r\n  \"email\": \"string\",\r\n  \"perfil\": \"JOGADOR\",\r\n  \"alteraSenha\": true,\r\n  \"dataNascimento\": \"2023-05-31T17:00:32.902Z\",\r\n  \"genero\": \"MASCULINO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter todos os usuarios",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar um usuário",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar um usuário",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"criadoEm\": \"2023-05-31T17:05:01.722Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:05:01.722Z\",\r\n  \"nome\": \"string\",\r\n  \"usuario\": \"string\",\r\n  \"senha\": \"string\",\r\n  \"email\": \"string\",\r\n  \"perfil\": \"JOGADOR\",\r\n  \"alteraSenha\": true,\r\n  \"dataNascimento\": \"2023-05-31T17:05:01.722Z\",\r\n  \"genero\": \"MASCULINO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter um usuário pelo id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code >= 200 && responseCode.code <= 299) {\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"    postman.setEnvironmentVariable('accessToken', jsonData.Authorization);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": \"string\",\r\n    \"senha\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Serviço de acesso",
+			"item": [
+				{
+					"name": "Obter acesso pelo id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/acesso/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"acesso",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter todos os acessos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/acesso",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"acesso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar um acesso",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/acesso/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"acesso",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar um acesso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"criadoEm\": \"2023-05-31T17:24:43.557Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:24:43.557Z\",\r\n  \"endpoint\": \"string\",\r\n  \"usuario\": \"string\",\r\n  \"date\": \"2023-05-31T17:24:43.557Z\",\r\n  \"autorizado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/acesso",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"acesso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar um acesso",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"criadoEm\": \"2023-05-31T17:25:30.983Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:25:30.983Z\",\r\n  \"endpoint\": \"string\",\r\n  \"usuario\": \"string\",\r\n  \"date\": \"2023-05-31T17:25:30.983Z\",\r\n  \"autorizado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/acesso/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"acesso",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Serviço de escola",
+			"item": [
+				{
+					"name": "Obter todas as escolas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/escolas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escolas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter uma escola pelo id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/escolas/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escolas",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar uma escola",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/escolas/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escolas",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar uma escola",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"criadoEm\": \"2023-05-31T17:45:05.344Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:45:05.344Z\",\r\n  \"nome\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/escolas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escolas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar uma escola",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"criadoEm\": \"2023-05-31T17:45:05.344Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:45:05.344Z\",\r\n  \"nome\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/escolas/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escolas",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Serviço de turmas",
+			"item": [
+				{
+					"name": "Obter todas as turmas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turmas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turmas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter uma turma pelo id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turmas/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turmas",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar uma turma",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turmas/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turmas",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar uma turma",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"criadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n  \"ano\": \"string\",\r\n  \"escolaId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"nome\": \"string\",\r\n  \"turno\": \"MATUTINO\",\r\n  \"anoLetivo\": 0,\r\n  \"professorId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"codigo\": 0,\r\n  \"escola\": {\r\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"criadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n    \"atualizadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n    \"nome\": \"string\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turmas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turmas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar senha de uma turma",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"senha\": \"string\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turmas/altera-senha",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turmas",
+								"altera-senha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar uma turma",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"criadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n  \"atualizadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n  \"ano\": \"string\",\r\n  \"escolaId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"nome\": \"string\",\r\n  \"turno\": \"MATUTINO\",\r\n  \"anoLetivo\": 0,\r\n  \"professorId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"codigo\": 0,\r\n  \"escola\": {\r\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"criadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n    \"atualizadoEm\": \"2023-05-31T17:51:41.293Z\",\r\n    \"nome\": \"string\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turmas/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turmas",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Serviço de ligação de entre aluno x turma",
+			"item": [
+				{
+					"name": "Obter todas as ligações entre aluno x turma",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turma-alunos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turma-alunos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter uma ligação de aluno x turma",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turma-alunos/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turma-alunos",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar uma ligação de aluno x turma",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turma-alunos/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turma-alunos",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar uma ligação de aluno x turma",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"criadoEm\": \"2023-05-31T18:00:06.648Z\",\r\n  \"atualizadoEm\": \"2023-05-31T18:00:06.648Z\",\r\n  \"turma\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"aluno\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turma-alunos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turma-alunos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter turmas pelo id de um aluno",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turma-alunos/turmas-por-aluno/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turma-alunos",
+								"turmas-por-aluno",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar uma ligação de aluno x turma",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"criadoEm\": \"2023-05-31T18:00:06.648Z\",\r\n  \"atualizadoEm\": \"2023-05-31T18:00:06.648Z\",\r\n  \"turma\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"aluno\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turma-alunos/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turma-alunos",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
