@@ -1,4 +1,4 @@
-package br.furb.inf.furbot.models;
+package br.furb.inf.furbot.models.usuarios;
 
 import javax.persistence.Entity;
 
