@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import br.furb.inf.furbot.models.gestao.Turma;
-import br.furb.inf.furbot.repositories.gestao.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import br.furb.inf.furbot.models.gestao.TurmaAluno;
 import br.furb.inf.furbot.repositories.gestao.TurmaAlunoRepository;
 import br.furb.inf.furbot.services.ServiceImpl;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TurmaAlunoService extends ServiceImpl<TurmaAluno> {
