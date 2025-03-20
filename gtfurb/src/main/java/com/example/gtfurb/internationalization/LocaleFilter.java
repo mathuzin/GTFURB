@@ -21,6 +21,5 @@ public class LocaleFilter extends OncePerRequestFilter {
             LocaleContextHolder.setLocale(Locale.getDefault());
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
-        //LocaleContextHolder.resetLocaleContext();
     }
 }
