@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/furbot/**")
+        registry.addResourceHandler("/gtfurb/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/springdoc-openapi-ui/")
                 .resourceChain(false);
     }
@@ -20,7 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi
                 .builder()
-                .group("FURBOT")
+                .group("GTFURB")
                 .pathsToMatch("/**")
                 .build();
     }
