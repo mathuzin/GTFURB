@@ -8,4 +8,5 @@ import com.example.gtfurb.models.Usuarios.Aluno;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
+
 }

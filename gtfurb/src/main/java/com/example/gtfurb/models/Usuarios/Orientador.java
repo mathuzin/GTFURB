@@ -36,4 +36,9 @@ public class Orientador {
     @Size(max = 100, message = "O email pode ter no máximo 100 caracteres")
     @Column(name = "email_orientador", length = 100, nullable = false)
     private String email;
+
+    @NotBlank(message = "A senha não pode estar vazia")
+    @Size(min = 5, message = "Senha deve ter no mínimo 5 caracteres.")
+    @Column(name = "senha_orientador", length = 255, nullable = false)
+    private String senha;
 }
