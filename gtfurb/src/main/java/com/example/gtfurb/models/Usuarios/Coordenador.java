@@ -1,4 +1,4 @@
-package com.example.gtfurb.models;
+package com.example.gtfurb.models.Usuarios;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,34 +6,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orientador")
-public class Orientador {
+@Table(name = "coordenador", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email_coordenador")
+})
+public class Coordenador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "O nome não pode estar vazio")
     @Size(max = 100, message = "O nome pode ter no máximo 100 caracteres")
-    @Column(name = "nm_orientador", length = 100, nullable = false)
+    @Column(name = "nm_coordenador", length = 100, nullable = false)
     private String nome;
 
     @NotBlank(message = "O email não pode estar vazio")
     @Email(message = "Email inválido")
     @Size(max = 100, message = "O email pode ter no máximo 100 caracteres")
-    @Column(name = "email_orientador", length = 100, nullable = false)
+    @Column(name = "email_coordenador", length = 100, nullable = false, unique = true)
     private String email;
 }
