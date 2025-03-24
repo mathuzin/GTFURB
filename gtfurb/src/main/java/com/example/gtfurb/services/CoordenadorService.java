@@ -38,9 +38,9 @@ public class CoordenadorService {
 
     }
 
-    public Aluno criarAluno(String nome, String email, String senha, Integer orientadorId) {
+    public Aluno criarAluno(String nome, String email, Integer orientadorId) {
 
-        if (nome == null || nome.isEmpty() || email == null || email.isEmpty() || senha == null || senha.isEmpty()) {
+        if (nome == null || nome.isEmpty() || email == null || email.isEmpty()) {
             throw new IllegalArgumentException("Nome, e-mail e senha são obrigatórios.");
         }
 
@@ -50,10 +50,22 @@ public class CoordenadorService {
         Aluno aluno = new Aluno();
         aluno.setNome(nome);
         aluno.setEmail(email);
-        aluno.setSenha(bCript.encode(senha));
         aluno.setOrientador(orientador);
 
         return alunoRepository.save(aluno);
+    }
+
+    public Orientador criarOrientador(String nome, String email) {
+
+        if (nome == null || nome.isEmpty() || email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
+        }
+
+        Orientador orientador = new Orientador();
+        orientador.setNome(nome);
+        orientador.setEmail(email);
+
+        return orientadorRepository.save(orientador);
     }
 
     public Relatorio criarRelatorio(String titulo, LocalDate dataInicio, LocalDate dataTermino) {
