@@ -1,10 +1,10 @@
 package com.example.gtfurb.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-import com.example.gtfurb.models.Relatorios.RelatorioAluno;
-import com.example.gtfurb.models.Relatorios.RelatorioCoordenador;
-import com.example.gtfurb.models.Relatorios.RelatorioOrientador;
+import com.example.gtfurb.models.enums.TipoRelatorio;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,15 +21,17 @@ public class RelatorioFinal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRelatorioFinal;
 
-    @OneToOne
-    @JoinColumn(name = "id_relatorioAluno", nullable = false, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorioAluno"))
-    private RelatorioAluno relatorioAluno;
+    @NotBlank(message = "O texto não pode estar vazio")
+    @Size(max = 5000, message = "O texto pode ter no máximo 5000 caracteres")
+    @Column(name = "txt_relatorio", length = 1000, nullable = false)
+    private String txt_relatorio;
 
     @OneToOne
-    @JoinColumn(name = "id_relatorioOrientador", nullable = false, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorioOrientador"))
-    private RelatorioOrientador relatorioOrientador;
+    @JoinColumn(name = "TCC_id_tcc", nullable = false, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorioOrientador"))
+    private Integer TCC_id_tcc;
 
-    @OneToOne
-    @JoinColumn(name = "id_relatorioCoordenador", nullable = false, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorioCoordenador"))
-    private RelatorioCoordenador relatorioCoordenador;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_relatorio", length = 100, nullable = true)
+    private TipoRelatorio tipo_relatorio;
+
 }
