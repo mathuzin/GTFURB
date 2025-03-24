@@ -1,4 +1,4 @@
-package com.example.gtfurb.models.Relatorios;
+package com.example.gtfurb.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
