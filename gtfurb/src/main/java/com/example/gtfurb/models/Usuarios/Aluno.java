@@ -40,6 +40,11 @@ public class Aluno {
     @Column(name = "email_aluno", length = 100, nullable = false)
     private String email;
 
+    @NotBlank(message = "A senha não pode estar vazia")
+    @Size(min = 5, message = "Senha deve ter no mínimo 5 caracteres.")
+    @Column(name = "senha_aluno", length = 255, nullable = false)
+    private String senha;
+
     @ManyToOne
     @JoinColumn(name = "id_orientador", nullable = false, foreignKey = @ForeignKey(name = "fk_aluno_orientador"))
     private Orientador orientador;
