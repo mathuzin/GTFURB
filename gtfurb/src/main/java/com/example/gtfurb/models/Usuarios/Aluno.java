@@ -46,7 +46,7 @@ public class Aluno {
     private String senha;
 
     @ManyToOne
-    @JoinColumn(name = "id_orientador", nullable = false, foreignKey = @ForeignKey(name = "fk_aluno_orientador"))
+    @JoinColumn(name = "id_orientador", nullable = true, foreignKey = @ForeignKey(name = "fk_aluno_orientador"))
     private Orientador orientador;
 
 }

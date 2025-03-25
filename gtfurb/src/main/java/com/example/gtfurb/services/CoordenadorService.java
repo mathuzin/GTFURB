@@ -1,6 +1,7 @@
 package com.example.gtfurb.services;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -36,6 +37,23 @@ public class CoordenadorService {
 
     CoordenadorService() {
 
+    }
+
+    public List<Orientador> buscarOrientador() {
+        return orientadorRepository.findAll();
+    }
+
+    public Orientador buscarOrientadorPeloId(Integer idOrientador) {
+        return orientadorRepository.findById(idOrientador)
+                .orElseThrow(() -> new EntityNotFoundException("Orientador não encontrado."));
+    }
+
+    public List<Aluno> buscarAlunosSemOrientador() {
+        return alunoRepository.findByOrientadorIsNull();
+    }
+
+    public List<Aluno> buscarAlunosPorOrientador(Integer idOrientador) {
+        return alunoRepository.findByOrientadorId(idOrientador);
     }
 
     public Aluno criarAluno(String nome, String email, Integer orientadorId) {
