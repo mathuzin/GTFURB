@@ -22,7 +22,7 @@ public class RelatorioFinal {
     private Integer idRelatorioFinal;
 
     @NotBlank(message = "O texto não pode estar vazio")
-    @Size(max = 5000, message = "O texto pode ter no máximo 5000 caracteres")
+    @Size(max = 1000, message = "O texto pode ter no máximo 1000 caracteres")
     @Column(name = "txt_relatorio", length = 1000, nullable = false)
     private String txt_relatorio;
 
