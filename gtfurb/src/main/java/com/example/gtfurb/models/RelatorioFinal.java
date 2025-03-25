@@ -31,7 +31,11 @@ public class RelatorioFinal {
     private Integer TCC_id_tcc;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_relatorio", length = 100, nullable = true)
+    @Column(name = "tipo_relatorio", length = 100, nullable = false)
     private TipoRelatorio tipo_relatorio;
+
+    @OneToOne
+    @JoinColumn(name = "relatorio_id", nullable = true, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorio"))
+    private Relatorio relatorio;
 
 }
