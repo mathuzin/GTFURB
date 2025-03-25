@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,44 +28,45 @@ public class CoordenadorController {
     // DropDown
     @GetMapping("/orientadores")
     public ResponseEntity<List<Orientador>> buscarOrientadores() {
-        return ResponseEntity.ok(coordenadorService.buscarOrientador());
+        return ResponseEntity.status(HttpStatus.OK).body(coordenadorService.buscarOrientador());
     }
 
     // DropDown
     @GetMapping("/orientadores/{id}")
     public ResponseEntity<Orientador> buscarOrientadorPorId(@PathVariable Integer id) {
-        return ResponseEntity.ok(coordenadorService.buscarOrientadorPeloId(id));
+        return ResponseEntity.status(HttpStatus.OK).body(coordenadorService.buscarOrientadorPeloId(id));
     }
 
     // DropDown
     @GetMapping("/alunos/sem-orientador")
     public ResponseEntity<List<Aluno>> buscarAlunosSemOrientador() {
-        return ResponseEntity.ok(coordenadorService.buscarAlunosSemOrientador());
+        return ResponseEntity.status(HttpStatus.OK).body(coordenadorService.buscarAlunosSemOrientador());
     }
 
     // DropDown
     @GetMapping("/alunos/por-orientador/{idOrientador}")
     public ResponseEntity<List<Aluno>> buscarAlunosPorOrientador(@PathVariable Integer idOrientador) {
-        return ResponseEntity.ok(coordenadorService.buscarAlunosPorOrientador(idOrientador));
+        return ResponseEntity.status(HttpStatus.OK).body(coordenadorService.buscarAlunosPorOrientador(idOrientador));
     }
 
     // PopUp/Janela na própria página
     @PostMapping("/alunos")
     public ResponseEntity<Aluno> criarAluno(@RequestParam String nome, @RequestParam String email,
             @RequestParam Integer orientadorId) {
-        return ResponseEntity.ok(coordenadorService.criarAluno(nome, email, orientadorId));
+        return ResponseEntity.status(HttpStatus.OK).body(coordenadorService.criarAluno(nome, email, orientadorId));
     }
 
     // PopUp/Janela na própria página
     @PostMapping("/orientadores")
     public ResponseEntity<Orientador> criarOrientador(@RequestParam String nome, @RequestParam String email) {
-        return ResponseEntity.ok(coordenadorService.criarOrientador(nome, email));
+        return ResponseEntity.status(HttpStatus.OK).body(coordenadorService.criarOrientador(nome, email));
     }
 
     // PopUp/Janela na própria página
     @PostMapping("/relatorios")
     public ResponseEntity<Relatorio> criarRelatorio(@RequestParam String titulo, @RequestParam LocalDate dataInicio,
             @RequestParam LocalDate dataTermino) {
-        return ResponseEntity.ok(coordenadorService.criarRelatorio(titulo, dataInicio, dataTermino));
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(coordenadorService.criarRelatorio(titulo, dataInicio, dataTermino));
     }
 }
