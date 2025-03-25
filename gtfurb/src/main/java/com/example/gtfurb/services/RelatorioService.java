@@ -10,5 +10,6 @@ public class RelatorioService {
 
     @Autowired
     private RelatorioRepository relatorioRepository;
+
     
 }
