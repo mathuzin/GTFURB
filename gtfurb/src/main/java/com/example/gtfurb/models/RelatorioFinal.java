@@ -4,8 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.example.gtfurb.models.enums.TipoRelatorio;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,15 +25,12 @@ public class RelatorioFinal {
     private String txt_relatorio;
 
     @OneToOne
-    @JoinColumn(name = "TCC_id_tcc", nullable = false, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorioOrientador"))
-    private Integer TCC_id_tcc;
+    @JoinColumn(name = "pessoa_id_pessoa", nullable = false, foreignKey = @ForeignKey(name = "pessoa_id_pessoa"))
+    private Integer id_pessoa;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_relatorio", length = 100, nullable = false)
-    private TipoRelatorio tipo_relatorio;
 
     @OneToOne
-    @JoinColumn(name = "relatorio_id", nullable = true, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorio"))
-    private Relatorio relatorio;
+    @JoinColumn(name = "relatorio", nullable = true, foreignKey = @ForeignKey(name = "fk_relatorioFinal_relatorio"))
+    private RelatorioFinal relatorioFinal;
 
 }

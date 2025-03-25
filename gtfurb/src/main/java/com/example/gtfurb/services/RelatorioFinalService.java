@@ -30,8 +30,6 @@ public class RelatorioFinalService {
     public RelatorioFinal atualizar(Long id, RelatorioFinal novoRelatorioFinal) {
         RelatorioFinal relatorio = buscarPorId(id);
         relatorio.setTxt_relatorio(novoRelatorioFinal.getTxt_relatorio());
-        relatorio.setTipo_relatorio(novoRelatorioFinal.getTipo_relatorio());
-        relatorio.setRelatorio(novoRelatorioFinal.getRelatorio());
         return relatorioRepositoryFinal.save(relatorio);
     }
 
