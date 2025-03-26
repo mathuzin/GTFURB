@@ -32,21 +32,15 @@ public class RelatorioService {
         return relatorioRepositoryFinal.save(relatorioFinal);
     }
 
-    public Relatorio atualizar(Long id, String novoTitulo, LocalDate novoDataInicio, LocalDate novoDataTermino) {
+    public Relatorio atualizar(Long id, String novoTitulo) {
 
         if (novoTitulo == null || novoTitulo.isEmpty()) {
             throw new IllegalArgumentException("Título do relatório é obrigatório.");
         }
 
-        if (novoDataInicio == null || novoDataTermino == null) {
-            throw new IllegalArgumentException("Data inicial e data final não podem ser nulas.");
-        }
-
         Relatorio relatorio = buscarPorId(id);
 
         relatorio.setTxt_titulo(novoTitulo);
-        relatorio.setDataInicio(novoDataInicio);
-        relatorio.setDataTermino(novoDataTermino);
 
         return relatorioRepositoryFinal.save(relatorio);
     }
