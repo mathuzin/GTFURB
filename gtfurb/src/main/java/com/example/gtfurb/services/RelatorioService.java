@@ -18,7 +18,7 @@ public class RelatorioService {
         return relatorioRepositoryFinal.findAll();
     }
 
-    public Relatorio buscarPorId(Long id) {
+    public Relatorio buscarPorId(Integer id) {
         return relatorioRepositoryFinal.findById(id)
                 .orElseThrow(() -> new RuntimeException("Relatório não encontrado!"));
     }
@@ -31,7 +31,7 @@ public class RelatorioService {
         return relatorioRepositoryFinal.save(relatorioFinal);
     }
 
-    public Relatorio atualizar(Long id, String novoTitulo) {
+    public Relatorio atualizar(Integer id, String novoTitulo) {
 
         if (novoTitulo == null || novoTitulo.isEmpty()) {
             throw new IllegalArgumentException("Título do relatório é obrigatório.");
@@ -44,7 +44,7 @@ public class RelatorioService {
         return relatorioRepositoryFinal.save(relatorio);
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         relatorioRepositoryFinal.deleteById(id);
     }
 }

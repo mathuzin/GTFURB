@@ -33,7 +33,7 @@ public class RelatorioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> buscarRelatorio(@PathVariable Long id) {
+    public ResponseEntity<String> buscarRelatorio(@PathVariable Integer id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.buscarPorId(id).getTxt_titulo());
     }
 
@@ -45,13 +45,13 @@ public class RelatorioController {
 
     // PUT
     @PutMapping("/{id}")
-    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Long id, @RequestBody String novosDados) {
+    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Integer id, @RequestBody String novosDados) {
         return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.atualizar(id, novosDados));
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirRelatorio(@PathVariable Long id) {
+    public ResponseEntity<Void> excluirRelatorio(@PathVariable Integer id) {
         relatorioFinalService.deletar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

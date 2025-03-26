@@ -33,7 +33,7 @@ public class PessoaRelatorioControllers {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> buscarRelatorio(@PathVariable Long id) {
+    public ResponseEntity<String> buscarRelatorio(@PathVariable Integer id) {
         return ResponseEntity.status(HttpStatus.OK).body(relatorioService.buscarPorId(id).getTxtRelatorio());
     }
 
@@ -45,14 +45,14 @@ public class PessoaRelatorioControllers {
 
     // PUT
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Long id, String novosDados,
+    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Integer id, String novosDados,
             float horasGastas) {
         return ResponseEntity.status(HttpStatus.OK).body(relatorioService.atualizar(id, novosDados, horasGastas));
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirRelatorio(@PathVariable Long id) {
+    public ResponseEntity<Void> excluirRelatorio(@PathVariable Integer id) {
         relatorioService.deletar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

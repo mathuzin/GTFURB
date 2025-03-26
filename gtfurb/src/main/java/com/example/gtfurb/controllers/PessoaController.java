@@ -97,7 +97,7 @@ public class PessoaController {
 
     @PutMapping("/pessoaRelatorio/{id}")
     public ResponseEntity<PessoaRelatorio> atualizarPessoaRelatorio(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestParam String novoTxt,
             @RequestParam float tempoRelatorio) {
         PessoaRelatorio relatorioAtualizado = pessoaService.atualizarPessoaRelatorio(id, novoTxt, tempoRelatorio);
@@ -106,7 +106,7 @@ public class PessoaController {
 
     @PutMapping("/relatorio/{id}")
     public ResponseEntity<Relatorio> atualizarRelatorio(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestParam String novoTitulo,
             @RequestParam LocalDate novoDataInicio,
             @RequestParam LocalDate novoDataTermino) {
@@ -123,13 +123,13 @@ public class PessoaController {
     }
 
     @DeleteMapping("/pessoaRelatorio/{id}")
-    public ResponseEntity<Void> deletarPessoaRelatorio(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarPessoaRelatorio(@PathVariable Integer id) {
         pessoaService.deletarPessoaRelatorio(id);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/relatorio/{id}")
-    public ResponseEntity<Void> deletarRelatorio(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarRelatorio(@PathVariable Integer id) {
         pessoaService.deletarRelatorio(id);
         return ResponseEntity.noContent().build();
     }

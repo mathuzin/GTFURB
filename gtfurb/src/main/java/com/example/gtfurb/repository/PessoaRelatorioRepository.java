@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 import com.example.gtfurb.models.PessoaRelatorio;
 
 @Repository
-public interface PessoaRelatorioRepository extends JpaRepository<PessoaRelatorio, Long> {
+public interface PessoaRelatorioRepository extends JpaRepository<PessoaRelatorio, Integer> {
 
     List<PessoaRelatorio> listarTodos();
 
-    PessoaRelatorio buscarPorId(Long id);
+    PessoaRelatorio buscarPorId(Integer id);
 
     PessoaRelatorio salvar(PessoaRelatorio pessoaRelatorio);
 
-    PessoaRelatorio atualizar(Long id, String novoTxt);
+    PessoaRelatorio atualizar(Integer id, String novoTxt);
 
-    void deletar(Long id);
+    void deletar(Integer id);
 }
