@@ -24,12 +24,27 @@ public class PessoaRelatorioService {
     }
 
     public PessoaRelatorio salvar(PessoaRelatorio pessoaRelatorio) {
+        if (pessoaRelatorio.getTxtRelatorio() == null || pessoaRelatorio.getTxtRelatorio().isEmpty()) {
+            throw new IllegalArgumentException("Texto do relatório é obrigatório.");
+        }
+
         return relatorioRepository.save(pessoaRelatorio);
     }
 
-    public PessoaRelatorio atualizar(Long id, String novoTxt) {
+    public PessoaRelatorio atualizar(Long id, String novoTxt, float tmp_tempoRelatorio ) {
+        if (novoTxt == null || novoTxt.isEmpty()) {
+            throw new IllegalArgumentException("Texto do relatório é obrigatório.");
+        }   
+
+        if (tmp_tempoRelatorio == 0) {
+            throw new IllegalArgumentException("Tempo gasto do relatório é obrigatório.");
+        }
+
         PessoaRelatorio relatorio = buscarPorId(id);
+
         relatorio.setTxtRelatorio((novoTxt));
+        relatorio.setTempoGasto(tmp_tempoRelatorio);
+
         return relatorioRepository.save(relatorio);
     }
 
