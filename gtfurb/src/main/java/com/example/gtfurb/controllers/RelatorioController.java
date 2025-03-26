@@ -18,11 +18,11 @@ import com.example.gtfurb.services.RelatorioService;
 
 @RestController
 @RequestMapping("/relatorios")
-public class RelatorioFinalController {
+public class RelatorioController {
 
     private final RelatorioService relatorioFinalService;
 
-    public RelatorioFinalController(RelatorioService relatorioFinalService) {
+    public RelatorioController(RelatorioService relatorioFinalService) {
         this.relatorioFinalService = relatorioFinalService;
     }
 
@@ -33,7 +33,7 @@ public class RelatorioFinalController {
 
     @GetMapping("/{id}")
     public ResponseEntity<String> buscarRelatorio(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.buscarPorId(id).getTxt_relatorio());
+        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.buscarPorId(id).getTxt_titulo());
     }
 
     @PostMapping
