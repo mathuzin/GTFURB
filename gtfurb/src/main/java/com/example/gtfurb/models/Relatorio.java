@@ -1,9 +1,18 @@
 package com.example.gtfurb.models;
 
-import javax.persistence.*;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,21 +22,22 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "relatorio")
+@Table(name = "relatorio_final")
 public class Relatorio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idRelatorio;
+    private Integer idRelatorioFinal;
 
-    @NotBlank(message = "O título não pode estar vazio")
-    @Size(max = 100, message = "O título deve ter no máximo 100 caracteres")
-    @Column(nullable = false, length = 100)
-    private String titulo;
+    @NotBlank(message = "O titulo não pode estar vazio")
+    @Size(max = 100, message = "O texto pode ter no máximo 1000 caracteres")
+    @Column(name = "tx_titulo", length = 100, nullable = false)
+    private String txt_titulo;
 
     @Column(nullable = false)
     private LocalDate dataInicio;
 
     @Column(nullable = false)
-    private LocalDate dataFim;
+    private LocalDate dataTermino;
+
 }

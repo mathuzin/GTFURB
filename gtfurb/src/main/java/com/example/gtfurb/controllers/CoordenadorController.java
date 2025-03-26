@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.gtfurb.models.Relatorio;
+import com.example.gtfurb.models.PessoaRelatorio;
 import com.example.gtfurb.models.Usuarios.Aluno;
 import com.example.gtfurb.models.Usuarios.Orientador;
 import com.example.gtfurb.services.CoordenadorService;
@@ -64,7 +64,7 @@ public class CoordenadorController {
 
     // PopUp/Janela na própria página
     @PostMapping("/relatorios")
-    public ResponseEntity<Relatorio> criarRelatorio(@RequestParam String titulo, @RequestParam LocalDate dataInicio,
+    public ResponseEntity<PessoaRelatorio> criarRelatorio(@RequestParam String titulo, @RequestParam LocalDate dataInicio,
             @RequestParam LocalDate dataTermino) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(coordenadorService.criarRelatorio(titulo, dataInicio, dataTermino));

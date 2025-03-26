@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.example.gtfurb.models.Relatorio;
 
 @Repository
-public interface RelatorioRepository extends JpaRepository<Relatorio, Integer> {
-
+public interface RelatorioRepository extends JpaRepository<Relatorio, Long> {
 }

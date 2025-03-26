@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.gtfurb.models.RelatorioFinal;
-import com.example.gtfurb.services.RelatorioFinalService;
+import com.example.gtfurb.models.Relatorio;
+import com.example.gtfurb.services.RelatorioService;
 
 @RestController
 @RequestMapping("/relatorios")
 public class RelatorioFinalController {
 
-    private final RelatorioFinalService relatorioFinalService;
+    private final RelatorioService relatorioFinalService;
 
-    public RelatorioFinalController(RelatorioFinalService relatorioFinalService) {
+    public RelatorioFinalController(RelatorioService relatorioFinalService) {
         this.relatorioFinalService = relatorioFinalService;
     }
 
     @GetMapping
-    public ResponseEntity<List<RelatorioFinal>> listarTodos() {
+    public ResponseEntity<List<Relatorio>> listarTodos() {
         return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.listarTodos());
     }
 
@@ -37,12 +37,12 @@ public class RelatorioFinalController {
     }
 
     @PostMapping
-    public ResponseEntity<RelatorioFinal> salvarRelatorio(@RequestBody RelatorioFinal relatorioFinal) {
+    public ResponseEntity<Relatorio> salvarRelatorio(@RequestBody Relatorio relatorioFinal) {
         return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.salvar(relatorioFinal));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RelatorioFinal> atualizarRelatorio(@PathVariable Long id, @RequestBody RelatorioFinal novosDados) {
+    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Long id, @RequestBody Relatorio novosDados) {
         return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.atualizar(id, novosDados));
     }
 
