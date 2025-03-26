@@ -41,4 +41,7 @@ public class PessoaRelatorio {
 
     @Column(nullable = false)
     private LocalDate dataInicio;
+
+    @Column(nullable = true)
+    private float tempoGasto;
 }

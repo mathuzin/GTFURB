@@ -1,27 +1,13 @@
 package com.example.gtfurb.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.example.gtfurb.models.enums.TipoCurso;
 import com.example.gtfurb.models.enums.TipoPessoa;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "pessoa")
@@ -29,22 +15,23 @@ public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPessoa;
+    private Integer id;
+
+    @Column(nullable = false, length = 100)
+    private String nome;
+
+    @Column(nullable = false, length = 100, unique = true)
+    private String email;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_pessoa", length = 100, nullable = false)
-    private TipoPessoa tipo_pessoa;
+    @Column(name = "tipo_pessoa", nullable = false)
+    private TipoPessoa tipoPessoa;
 
-    @OneToMany
-    @JoinColumn(name = "id_aluno", nullable = false, foreignKey = @ForeignKey(name = "aluno_id_aluno"))
-    private String id_aluno;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_curso", nullable = true)
+    private TipoCurso tipoCurso;
 
-    @OneToMany
-    @JoinColumn(name = "id_orientador", nullable = false, foreignKey = @ForeignKey(name = "orientador_id_orientador"))
-    private String id_orientador;
-
-    @OneToMany
-    @JoinColumn(name = "id_coordenador", nullable = false, foreignKey = @ForeignKey(name = "coordenador_id_coordenador"))
-    private String id_coordenador;
-
+    @ManyToOne
+    @JoinColumn(name = "id_orientador", nullable = true)
+    private Pessoa orientador;
 }
