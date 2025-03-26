@@ -11,9 +11,13 @@ import com.example.gtfurb.models.Pessoa;
 import com.example.gtfurb.models.PessoaRelatorio;
 import com.example.gtfurb.models.enums.TipoPessoa;
 import com.example.gtfurb.repository.PessoaRelatorioRepository;
+import com.example.gtfurb.repository.PessoaRepository;
 
 @Service
 public class PessoaRelatorioService {
+
+    @Autowired
+    private PessoaRepository pessoaRepository;
 
     @Autowired
     private PessoaRelatorioRepository relatorioRepository;
@@ -32,10 +36,10 @@ public class PessoaRelatorioService {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }
          
-            Pessoa pessoa = buscarPorId(pessoaRelatorio.getIdPessoa()) 
-                    .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
 
-
+        Pessoa pessoa = pessoaRepository.findById(pessoaRelatorio.getIdPessoa())
+                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
+        
         if (pessoa.getTipoPessoa() == TipoPessoa.ALUNO) {
             // Verificando se tempoGasto é null ou menor ou igual a 0
             if (pessoaRelatorio.getTempoGasto() == null || pessoaRelatorio.getTempoGasto() <= 0) {

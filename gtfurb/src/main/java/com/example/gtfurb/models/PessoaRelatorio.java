@@ -32,7 +32,7 @@ public class PessoaRelatorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "id_relatorio", nullable = false, foreignKey = @ForeignKey(name = "relatorio_id_relatorio"))
-    private Integer idRelatorio;
+    private Long idRelatorio;
 
     @NotBlank(message = "O campo de texto não pode estar vazio")
     @Size(max = 500, message = "O texto deve ter no máximo 5000 caracteres")
