@@ -41,12 +41,10 @@ public class PessoaRelatorioService {
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
         
         if (pessoa.getTipoPessoa() == TipoPessoa.ALUNO) {
-            // Verificando se tempoGasto é null ou menor ou igual a 0
             if (pessoaRelatorio.getTempoGasto() == null || pessoaRelatorio.getTempoGasto() <= 0) {
                 throw new IllegalArgumentException("O tempo gasto é obrigatório para alunos e deve ser maior que 0.");
             }
         } else {
-            // Para pessoas que não são alunos, setamos o tempoGasto para 0
             pessoaRelatorio.setTempoGasto(0f);
         }
 
