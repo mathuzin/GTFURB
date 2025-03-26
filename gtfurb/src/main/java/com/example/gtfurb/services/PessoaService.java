@@ -1,6 +1,5 @@
 package com.example.gtfurb.services;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.example.gtfurb.models.Pessoa;
 import com.example.gtfurb.models.PessoaRelatorio;
 import com.example.gtfurb.models.Relatorio;
-import com.example.gtfurb.models.enums.TipoCurso;
 import com.example.gtfurb.models.enums.TipoPessoa;
 import com.example.gtfurb.repository.PessoaRelatorioRepository;
 import com.example.gtfurb.repository.PessoaRepository;
@@ -65,90 +63,67 @@ public class PessoaService {
         return pessoaRepository.findByTipoPessoaAndOrientadorId(TipoPessoa.ALUNO, idOrientador);
     }
 
-    public Pessoa criarAluno(String nome, String email, Integer orientadorId, TipoCurso tipoCurso) {
+    public Pessoa criarAluno(Pessoa aluno) {
 
-        if (nome == null || nome.isEmpty() || email == null || email.isEmpty()) {
+        if (aluno.getNome() == null || aluno.getNome().isEmpty() || aluno.getEmail() == null
+                || aluno.getEmail().isEmpty()) {
             throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
         }
 
-        Pessoa orientador = pessoaRepository.findById(orientadorId)
-                .orElseThrow(() -> new EntityNotFoundException("Orientador não encontrado."));
-
-        Pessoa aluno = new Pessoa();
-        aluno.setNome(nome);
-        aluno.setEmail(email);
-        aluno.setTipoPessoa(TipoPessoa.ALUNO);
-        aluno.setOrientador(orientador);
-        aluno.setTipoCurso(tipoCurso);
+        if (aluno.getTipoPessoa() == TipoPessoa.ALUNO && aluno.getOrientador() == null) {
+            throw new IllegalArgumentException("Orientador é obrigatório para alunos.");
+        }
 
         return pessoaRepository.save(aluno);
     }
 
-    public Pessoa criarOrientador(String nome, String email) {
+    public Pessoa criarOrientador(Pessoa orientador) {
 
-        if (nome == null || nome.isEmpty() || email == null || email.isEmpty()) {
+        if (orientador.getNome() == null || orientador.getNome().isEmpty() || orientador.getEmail() == null
+                || orientador.getEmail().isEmpty()) {
             throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
         }
-
-        Pessoa orientador = new Pessoa();
-        orientador.setNome(nome);
-        orientador.setEmail(email);
-        orientador.setTipoPessoa(TipoPessoa.ORIENTADOR);
 
         return pessoaRepository.save(orientador);
     }
 
-    public Pessoa criarCoordenador(String nome, String email) {
+    public Pessoa criarCoordenador(Pessoa coordenador) {
 
-        if (nome == null || nome.isEmpty() || email == null || email.isEmpty()) {
+        if (coordenador.getNome() == null || coordenador.getNome().isEmpty() || coordenador.getEmail() == null
+                || coordenador.getEmail().isEmpty()) {
             throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
         }
-
-        Pessoa coordenador = new Pessoa();
-        coordenador.setNome(nome);
-        coordenador.setEmail(email);
-        coordenador.setTipoPessoa(TipoPessoa.COORDENADOR);
 
         return pessoaRepository.save(coordenador);
     }
 
-    public Relatorio criarRelatorio(String titulo, LocalDate dataInicio, LocalDate dataTermino) {
+    public Relatorio criarRelatorio(Relatorio relatorio) {
 
-        if (titulo == null || titulo.isEmpty()) {
+        if (relatorio.getTxt_titulo() == null || relatorio.getTxt_titulo().isEmpty()) {
             throw new IllegalArgumentException("Título é obrigatório.");
         }
-
-        Relatorio relatorio = new Relatorio();
-        relatorio.setTxt_titulo(titulo);
-        relatorio.setDataInicio(dataInicio);
-        relatorio.setDataTermino(dataTermino);
 
         return relatorioRepository.save(relatorio);
     }
 
-    public PessoaRelatorio criarPessoaRelatorio(Integer idPessoa, String txtRelatorio, LocalDate dataInicio,
-            Float tempoGasto) {
+    public PessoaRelatorio criarPessoaRelatorio(PessoaRelatorio pessoaRelatorio) {
 
-        if (txtRelatorio == null || txtRelatorio.isEmpty()) {
+        if (pessoaRelatorio.getTxtRelatorio() == null || pessoaRelatorio.getTxtRelatorio().isEmpty()) {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }
 
-        Pessoa pessoa = pessoaRepository.findById(idPessoa)
+        Pessoa pessoa = pessoaRepository.findById(pessoaRelatorio.getIdPessoa())
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
 
         if (pessoa.getTipoPessoa() == TipoPessoa.ALUNO) {
-            if (tempoGasto == null || tempoGasto <= 0) {
+            // Verificando se tempoGasto é null ou menor ou igual a 0
+            if (pessoaRelatorio.getTempoGasto() == null || pessoaRelatorio.getTempoGasto() <= 0) {
                 throw new IllegalArgumentException("O tempo gasto é obrigatório para alunos e deve ser maior que 0.");
             }
         } else {
-            tempoGasto = 0f;
+            // Para pessoas que não são alunos, setamos o tempoGasto para 0
+            pessoaRelatorio.setTempoGasto(0f);
         }
-
-        PessoaRelatorio pessoaRelatorio = new PessoaRelatorio();
-        pessoaRelatorio.setIdPessoa(idPessoa);
-        pessoaRelatorio.setTxtRelatorio(txtRelatorio);
-        pessoaRelatorio.setDataInicio(dataInicio);
-        pessoaRelatorio.setTempoGasto(tempoGasto);
 
         return pessoaRelatorioRepository.save(pessoaRelatorio);
     }
