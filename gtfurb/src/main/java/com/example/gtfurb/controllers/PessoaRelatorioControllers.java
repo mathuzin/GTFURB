@@ -40,8 +40,8 @@ public class PessoaRelatorioControllers {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Long id, String novosDados) {
-        return ResponseEntity.status(HttpStatus.OK).body(relatorioService.atualizar(id, novosDados));
+    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Long id, String novosDados, float horasGastas) {
+        return ResponseEntity.status(HttpStatus.OK).body(relatorioService.atualizar(id, novosDados, horasGastas));
     }
 
     @DeleteMapping("/{id}")

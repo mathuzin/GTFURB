@@ -27,7 +27,7 @@ public class PessoaRelatorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "id_pessoa", nullable = false, foreignKey = @ForeignKey(name = "pessoa_id_pessoa"))
-    private Integer idPessoa;
+    private Long idPessoa;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

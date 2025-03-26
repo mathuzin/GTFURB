@@ -42,7 +42,7 @@ public class RelatorioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Long id, @RequestBody Relatorio novosDados) {
+    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Long id, @RequestBody String novosDados) {
         return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.atualizar(id, novosDados));
     }
 
