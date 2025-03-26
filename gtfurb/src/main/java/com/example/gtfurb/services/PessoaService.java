@@ -1,5 +1,6 @@
 package com.example.gtfurb.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -11,7 +12,6 @@ import com.example.gtfurb.models.Pessoa;
 import com.example.gtfurb.models.PessoaRelatorio;
 import com.example.gtfurb.models.Relatorio;
 import com.example.gtfurb.models.enums.TipoPessoa;
-import com.example.gtfurb.repository.PessoaRelatorioRepository;
 import com.example.gtfurb.repository.PessoaRepository;
 import com.example.gtfurb.repository.RelatorioRepository;
 
@@ -22,10 +22,10 @@ public class PessoaService {
     private PessoaRepository pessoaRepository;
 
     @Autowired
-    private RelatorioRepository relatorioRepository;
+    private PessoaRelatorioService pessoaRelatorioService;
 
     @Autowired
-    private PessoaRelatorioRepository pessoaRelatorioRepository;
+    private RelatorioRepository relatorioService;
 
     public List<Pessoa> buscarCoordenadores() {
         return pessoaRepository.findByTipoPessoa(TipoPessoa.COORDENADOR);
@@ -97,35 +97,49 @@ public class PessoaService {
         return pessoaRepository.save(coordenador);
     }
 
-    public Relatorio criarRelatorio(Relatorio relatorio) {
+    public Pessoa alterarPessoa(Integer idPessoa, String nomePessoa, String emailPessoa, Pessoa orientador) {
 
-        if (relatorio.getTxt_titulo() == null || relatorio.getTxt_titulo().isEmpty()) {
-            throw new IllegalArgumentException("Título é obrigatório.");
-        }
-
-        return relatorioRepository.save(relatorio);
-    }
-
-    public PessoaRelatorio criarPessoaRelatorio(PessoaRelatorio pessoaRelatorio) {
-
-        if (pessoaRelatorio.getTxtRelatorio() == null || pessoaRelatorio.getTxtRelatorio().isEmpty()) {
-            throw new IllegalArgumentException("Texto do relatório é obrigatório.");
-        }
-
-        Pessoa pessoa = pessoaRepository.findById(pessoaRelatorio.getIdPessoa())
+        Pessoa pessoa = pessoaRepository.findById(idPessoa)
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
 
-        if (pessoa.getTipoPessoa() == TipoPessoa.ALUNO) {
-            // Verificando se tempoGasto é null ou menor ou igual a 0
-            if (pessoaRelatorio.getTempoGasto() == null || pessoaRelatorio.getTempoGasto() <= 0) {
-                throw new IllegalArgumentException("O tempo gasto é obrigatório para alunos e deve ser maior que 0.");
-            }
-        } else {
-            // Para pessoas que não são alunos, setamos o tempoGasto para 0
-            pessoaRelatorio.setTempoGasto(0f);
-        }
+        pessoa.setNome(nomePessoa);
+        pessoa.setEmail(emailPessoa);
+        pessoa.setOrientador(orientador);
 
-        return pessoaRelatorioRepository.save(pessoaRelatorio);
+        return pessoaRepository.save(pessoa);
+    }
+
+    public void deletarPessoa(Integer idPessoa) {
+
+        Pessoa pessoa = pessoaRepository.findById(idPessoa)
+                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
+
+        pessoaRepository.delete(pessoa);
+    }
+
+    public PessoaRelatorio salvarPessoaRelatorio(PessoaRelatorio pessoaRelatorio) {
+        return pessoaRelatorioService.salvar(pessoaRelatorio);
+    }
+
+    public PessoaRelatorio atualizarPessoaRelatorio(Long id, String novoTxt, float tempoRelatorio) {
+        return pessoaRelatorioService.atualizar(id, novoTxt, tempoRelatorio);
+    }
+
+    public void deletarPessoaRelatorio(Long id) {
+        pessoaRelatorioService.deletar(id);
+    }
+
+    public Relatorio salvarRelatorio(Relatorio relatorioFinal) {
+        return relatorioService.salvar(relatorioFinal);
+    }
+
+    public Relatorio atualizarRelatorio(Long id, String novoTitulo, LocalDate novoDataInicio,
+            LocalDate novoDataTermino) {
+        return relatorioService.atualizar(id, novoTitulo, novoDataInicio, novoDataTermino);
+    }
+
+    public void deletarRelatorio(Long id) {
+        relatorioService.deletar(id);
     }
 
 }
