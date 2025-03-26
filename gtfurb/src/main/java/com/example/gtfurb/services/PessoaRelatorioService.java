@@ -26,7 +26,7 @@ public class PessoaRelatorioService {
         return relatorioRepository.findAll();
     }
 
-    public PessoaRelatorio buscarPorId(Long id) {
+    public PessoaRelatorio buscarPorId(Integer id) {
         return relatorioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Não encontrado"));
     }
@@ -54,7 +54,7 @@ public class PessoaRelatorioService {
         return relatorioRepository.save(pessoaRelatorio);
     }
 
-    public PessoaRelatorio atualizar(Long id, String novoTxt, float tmp_tempoRelatorio ) {
+    public PessoaRelatorio atualizar(Integer id, String novoTxt, float tmp_tempoRelatorio ) {
         if (novoTxt == null || novoTxt.isEmpty()) {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }   
@@ -71,7 +71,7 @@ public class PessoaRelatorioService {
         return relatorioRepository.save(relatorio);
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         relatorioRepository.deleteById(id);
     }
     

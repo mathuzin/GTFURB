@@ -121,11 +121,11 @@ public class PessoaService {
         return pessoaRelatorioService.salvar(pessoaRelatorio);
     }
 
-    public PessoaRelatorio atualizarPessoaRelatorio(Long id, String novoTxt, float tempoRelatorio) {
+    public PessoaRelatorio atualizarPessoaRelatorio(Integer id, String novoTxt, float tempoRelatorio) {
         return pessoaRelatorioService.atualizar(id, novoTxt, tempoRelatorio);
     }
 
-    public void deletarPessoaRelatorio(Long id) {
+    public void deletarPessoaRelatorio(Integer id) {
         pessoaRelatorioService.deletar(id);
     }
 
@@ -133,12 +133,12 @@ public class PessoaService {
         return relatorioService.salvar(relatorioFinal);
     }
 
-    public Relatorio atualizarRelatorio(Long id, String novoTitulo, LocalDate novoDataInicio,
+    public Relatorio atualizarRelatorio(Integer id, String novoTitulo, LocalDate novoDataInicio,
             LocalDate novoDataTermino) {
         return relatorioService.atualizar(id, novoTitulo, novoDataInicio, novoDataTermino);
     }
 
-    public void deletarRelatorio(Long id) {
+    public void deletarRelatorio(Integer id) {
         relatorioService.deletar(id);
     }
 
