@@ -1,13 +1,13 @@
 package com.example.gtfurb.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -22,17 +22,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "pessoa_relatorio")
-public class PessoaRelatorio {
+@IdClass(PessoaRelatorioId.class)
+public class PessoaRelatorio implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "id_pessoa", nullable = false, foreignKey = @ForeignKey(name = "pessoa_id_pessoa"))
     private Integer idPessoa;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "id_relatorio", nullable = false, foreignKey = @ForeignKey(name = "relatorio_id_relatorio"))
-    private Long idRelatorio;
+    private Integer idRelatorio;
 
     @NotBlank(message = "O campo de texto não pode estar vazio")
     @Size(max = 500, message = "O texto deve ter no máximo 5000 caracteres")

@@ -28,14 +28,13 @@ public class PessoaRelatorioService {
 
     public PessoaRelatorio buscarPorId(Integer id) {
         return relatorioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Relatório não encontrado"));
     }
 
     public PessoaRelatorio salvar(PessoaRelatorio pessoaRelatorio) {
         if (pessoaRelatorio.getTxtRelatorio() == null || pessoaRelatorio.getTxtRelatorio().isEmpty()) {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }
-         
 
         Pessoa pessoa = pessoaRepository.findById(pessoaRelatorio.getIdPessoa())
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
@@ -45,25 +44,24 @@ public class PessoaRelatorioService {
                 throw new IllegalArgumentException("O tempo gasto é obrigatório para alunos e deve ser maior que 0.");
             }
         } else {
-            pessoaRelatorio.setTempoGasto(0f);
+            pessoaRelatorio.setTempoGasto(0f); // Para não alunos, o tempo é 0.
         }
-
 
         return relatorioRepository.save(pessoaRelatorio);
     }
 
-    public PessoaRelatorio atualizar(Integer id, String novoTxt, float tmp_tempoRelatorio ) {
+    public PessoaRelatorio atualizar(Integer id, String novoTxt, float tmp_tempoRelatorio) {
         if (novoTxt == null || novoTxt.isEmpty()) {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
-        }   
+        }
 
-        if (tmp_tempoRelatorio == 0) {
-            throw new IllegalArgumentException("Tempo gasto do relatório é obrigatório.");
+        if (tmp_tempoRelatorio <= 0) {
+            throw new IllegalArgumentException("Tempo gasto do relatório deve ser maior que 0.");
         }
 
         PessoaRelatorio relatorio = buscarPorId(id);
 
-        relatorio.setTxtRelatorio((novoTxt));
+        relatorio.setTxtRelatorio(novoTxt);
         relatorio.setTempoGasto(tmp_tempoRelatorio);
 
         return relatorioRepository.save(relatorio);
@@ -72,5 +70,4 @@ public class PessoaRelatorioService {
     public void deletar(Integer id) {
         relatorioRepository.deleteById(id);
     }
-    
 }
