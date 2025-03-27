@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.gtfurb.models.PessoaRelatorio;
+import com.example.gtfurb.models.PessoaRelatorioId;
 import com.example.gtfurb.services.PessoaRelatorioService;
 
 @Controller
@@ -32,27 +33,32 @@ public class PessoaRelatorioControllers {
         return ResponseEntity.status(HttpStatus.OK).body(relatorioService.listarTodos());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<String> buscarRelatorio(@PathVariable Integer id) {
+    @GetMapping("/{idPessoa}/{idRelatorio}")
+    public ResponseEntity<String> buscarRelatorio(@PathVariable Integer idPessoa, @PathVariable Integer idRelatorio) {
+        PessoaRelatorioId id = new PessoaRelatorioId(idPessoa, idRelatorio);
         return ResponseEntity.status(HttpStatus.OK).body(relatorioService.buscarPorId(id).getTxtRelatorio());
     }
 
     // POST
     @PostMapping
     public ResponseEntity<PessoaRelatorio> salvarRelatorio(@RequestBody PessoaRelatorio relatorioFinal) {
-        return ResponseEntity.status(HttpStatus.OK).body(relatorioService.salvar(relatorioFinal));
+        return ResponseEntity.status(HttpStatus.CREATED).body(relatorioService.salvar(relatorioFinal));
     }
 
     // PUT
-    @PutMapping("/{id}")
-    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Integer id, String novosDados,
-            float horasGastas) {
-        return ResponseEntity.status(HttpStatus.OK).body(relatorioService.atualizar(id, novosDados, horasGastas));
+    @PutMapping("/{idPessoa}/{idRelatorio}")
+    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Integer idPessoa,
+            @PathVariable Integer idRelatorio,
+            @RequestBody PessoaRelatorio dadosAtualizados) {
+        PessoaRelatorioId id = new PessoaRelatorioId(idPessoa, idRelatorio);
+        return ResponseEntity.status(HttpStatus.OK).body(
+                relatorioService.atualizar(id, dadosAtualizados.getTxtRelatorio(), dadosAtualizados.getTempoGasto()));
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirRelatorio(@PathVariable Integer id) {
+    @DeleteMapping("/{idPessoa}/{idRelatorio}")
+    public ResponseEntity<Void> excluirRelatorio(@PathVariable Integer idPessoa, @PathVariable Integer idRelatorio) {
+        PessoaRelatorioId id = new PessoaRelatorioId(idPessoa, idRelatorio);
         relatorioService.deletar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

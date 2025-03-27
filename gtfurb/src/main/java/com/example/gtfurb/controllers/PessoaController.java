@@ -2,6 +2,7 @@ package com.example.gtfurb.controllers;
 
 import com.example.gtfurb.models.Pessoa;
 import com.example.gtfurb.models.PessoaRelatorio;
+import com.example.gtfurb.models.PessoaRelatorioId;
 import com.example.gtfurb.models.Relatorio;
 import com.example.gtfurb.services.PessoaService;
 
@@ -97,7 +98,7 @@ public class PessoaController {
 
     @PutMapping("/pessoaRelatorio/{id}")
     public ResponseEntity<PessoaRelatorio> atualizarPessoaRelatorio(
-            @PathVariable Integer id,
+            @PathVariable PessoaRelatorioId id,
             @RequestParam String novoTxt,
             @RequestParam float tempoRelatorio) {
         PessoaRelatorio relatorioAtualizado = pessoaService.atualizarPessoaRelatorio(id, novoTxt, tempoRelatorio);
@@ -123,7 +124,7 @@ public class PessoaController {
     }
 
     @DeleteMapping("/pessoaRelatorio/{id}")
-    public ResponseEntity<Void> deletarPessoaRelatorio(@PathVariable Integer id) {
+    public ResponseEntity<Void> deletarPessoaRelatorio(@PathVariable PessoaRelatorioId id) {
         pessoaService.deletarPessoaRelatorio(id);
         return ResponseEntity.noContent().build();
     }

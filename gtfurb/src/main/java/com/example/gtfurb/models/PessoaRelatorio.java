@@ -9,6 +9,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -23,15 +24,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "pessoa_relatorio")
 @IdClass(PessoaRelatorioId.class)
-public class PessoaRelatorio implements Serializable{
+public class PessoaRelatorio implements Serializable {
+
+    private PessoaRelatorioId pessoaRelatorioId;
 
     @Id
+    @ManyToOne
     @JoinColumn(name = "id_pessoa", nullable = false, foreignKey = @ForeignKey(name = "pessoa_id_pessoa"))
-    private Integer idPessoa;
+    private Pessoa pessoa;
 
     @Id
+    @ManyToOne
     @JoinColumn(name = "id_relatorio", nullable = false, foreignKey = @ForeignKey(name = "relatorio_id_relatorio"))
-    private Integer idRelatorio;
+    private Relatorio relatorio;
 
     @NotBlank(message = "O campo de texto não pode estar vazio")
     @Size(max = 500, message = "O texto deve ter no máximo 5000 caracteres")
@@ -43,4 +48,13 @@ public class PessoaRelatorio implements Serializable{
 
     @Column(nullable = true)
     private Float tempoGasto;
+
+    public PessoaRelatorioId getPessoaRelatorioId() {
+        return pessoaRelatorioId;
+    }
+
+    public void setPessoaRelatorioId(PessoaRelatorioId pessoaRelatorioId) {
+        this.pessoaRelatorioId = pessoaRelatorioId;
+    }
+
 }

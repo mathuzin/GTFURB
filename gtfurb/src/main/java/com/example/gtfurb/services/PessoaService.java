@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.gtfurb.models.Pessoa;
 import com.example.gtfurb.models.PessoaRelatorio;
+import com.example.gtfurb.models.PessoaRelatorioId;
 import com.example.gtfurb.models.Relatorio;
 import com.example.gtfurb.models.enums.TipoPessoa;
 import com.example.gtfurb.repository.PessoaRepository;
@@ -121,11 +122,11 @@ public class PessoaService {
         return pessoaRelatorioService.salvar(pessoaRelatorio);
     }
 
-    public PessoaRelatorio atualizarPessoaRelatorio(Integer id, String novoTxt, float tempoRelatorio) {
+    public PessoaRelatorio atualizarPessoaRelatorio(PessoaRelatorioId id, String novoTxt, float tempoRelatorio) {
         return pessoaRelatorioService.atualizar(id, novoTxt, tempoRelatorio);
     }
 
-    public void deletarPessoaRelatorio(Integer id) {
+    public void deletarPessoaRelatorio(PessoaRelatorioId id) {
         pessoaRelatorioService.deletar(id);
     }
 
@@ -141,5 +142,4 @@ public class PessoaService {
     public void deletarRelatorio(Integer id) {
         relatorioService.deletar(id);
     }
-
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.gtfurb.models.Pessoa;
 import com.example.gtfurb.models.PessoaRelatorio;
+import com.example.gtfurb.models.PessoaRelatorioId;
 import com.example.gtfurb.models.enums.TipoPessoa;
 import com.example.gtfurb.repository.PessoaRelatorioRepository;
 import com.example.gtfurb.repository.PessoaRepository;
@@ -26,7 +27,7 @@ public class PessoaRelatorioService {
         return relatorioRepository.findAll();
     }
 
-    public PessoaRelatorio buscarPorId(Integer id) {
+    public PessoaRelatorio buscarPorId(PessoaRelatorioId id) {
         return relatorioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Relatório não encontrado"));
     }
@@ -36,21 +37,22 @@ public class PessoaRelatorioService {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }
 
-        Pessoa pessoa = pessoaRepository.findById(pessoaRelatorio.getIdPessoa())
+        Integer idPessoa = pessoaRelatorio.getPessoaRelatorioId().getIdPessoa();
+        Pessoa pessoa = pessoaRepository.findById(idPessoa)
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
-        
+
         if (pessoa.getTipoPessoa() == TipoPessoa.ALUNO) {
             if (pessoaRelatorio.getTempoGasto() == null || pessoaRelatorio.getTempoGasto() <= 0) {
                 throw new IllegalArgumentException("O tempo gasto é obrigatório para alunos e deve ser maior que 0.");
             }
         } else {
-            pessoaRelatorio.setTempoGasto(0f); // Para não alunos, o tempo é 0.
+            pessoaRelatorio.setTempoGasto(0f);
         }
 
         return relatorioRepository.save(pessoaRelatorio);
     }
 
-    public PessoaRelatorio atualizar(Integer id, String novoTxt, float tmp_tempoRelatorio) {
+    public PessoaRelatorio atualizar(PessoaRelatorioId id, String novoTxt, float tmp_tempoRelatorio) {
         if (novoTxt == null || novoTxt.isEmpty()) {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }
@@ -67,7 +69,7 @@ public class PessoaRelatorioService {
         return relatorioRepository.save(relatorio);
     }
 
-    public void deletar(Integer id) {
+    public void deletar(PessoaRelatorioId id) {
         relatorioRepository.deleteById(id);
     }
 }
