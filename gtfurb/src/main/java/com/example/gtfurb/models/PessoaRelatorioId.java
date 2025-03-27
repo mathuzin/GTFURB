@@ -11,7 +11,7 @@ import lombok.Setter;
 public class PessoaRelatorioId implements Serializable {
 
     private Integer idPessoa;
-    private Long idRelatorio;
+    private Integer idRelatorio;
 
 
     @Override
