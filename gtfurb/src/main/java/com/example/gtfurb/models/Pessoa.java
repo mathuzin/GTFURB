@@ -34,5 +34,5 @@ public class Pessoa {
     @ManyToOne
     @JoinColumn(name = "id_orientador", nullable = true)
     private Pessoa orientador;
-    
+
 }

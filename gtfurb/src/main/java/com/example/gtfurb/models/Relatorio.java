@@ -36,5 +36,4 @@ public class Relatorio {
 
     @Column(nullable = false)
     private LocalDate dataTermino;
-
 }
