@@ -89,11 +89,10 @@ public class PessoaController {
     // PUT
     @PutMapping("/pessoa/{id}")
     public ResponseEntity<Pessoa> alterarPessoa(@PathVariable Integer id,
-            @RequestParam String nomePessoa,
-            @RequestParam String emailPessoa,
-            @RequestParam(required = false) Pessoa orientador) {
-        Pessoa pessoaAlterada = pessoaService.alterarPessoa(id, nomePessoa, emailPessoa, orientador);
-        return ResponseEntity.status(HttpStatus.OK).body(pessoaAlterada);
+            @RequestBody Pessoa pessoaAlterada) {
+        Pessoa pessoaAtualizada = pessoaService.alterarPessoa(id, pessoaAlterada.getNome(), pessoaAlterada.getEmail(),
+                pessoaAlterada.getOrientador());
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaAtualizada);
     }
 
     @PutMapping("/pessoaRelatorio/{id}")

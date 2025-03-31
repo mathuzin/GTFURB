@@ -1,5 +1,6 @@
 package com.example.gtfurb.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,18 @@ import com.example.gtfurb.repository.RelatorioRepository;
 public class RelatorioService {
 
     @Autowired
-    private RelatorioRepository relatorioRepositoryFinal;
+    private final RelatorioRepository relatorioRepositoryFinal;
+
+    public RelatorioService(RelatorioRepository relatorioRepositoryFinal) {
+        this.relatorioRepositoryFinal = relatorioRepositoryFinal;
+    }
 
     public List<Relatorio> listarTodos() {
         return relatorioRepositoryFinal.findAll();
     }
 
     public Relatorio buscarPorId(Integer id) {
-        return relatorioRepositoryFinal.findById(id)
+        return relatorioRepositoryFinal.findRelatorioById(id)
                 .orElseThrow(() -> new RuntimeException("Relatório não encontrado!"));
     }
 
@@ -31,17 +36,18 @@ public class RelatorioService {
         return relatorioRepositoryFinal.save(relatorioFinal);
     }
 
-    public Relatorio atualizar(Integer id, String novoTitulo) {
-
+    public Relatorio atualizar(Integer id, String novoTitulo, LocalDate novaDataInicio, LocalDate novaDataTermino) {
         if (novoTitulo == null || novoTitulo.isEmpty()) {
             throw new IllegalArgumentException("Título do relatório é obrigatório.");
         }
 
-        Relatorio relatorio = buscarPorId(id);
+        int updated = relatorioRepositoryFinal.updateRelatorio(id, novoTitulo, novaDataInicio, novaDataTermino);
 
-        relatorio.setTxt_titulo(novoTitulo);
+        if (updated == 0) {
+            throw new RuntimeException("Erro ao atualizar relatório ou relatório não encontrado.");
+        }
 
-        return relatorioRepositoryFinal.save(relatorio);
+        return buscarPorId(id);
     }
 
     public void deletar(Integer id) {

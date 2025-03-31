@@ -21,7 +21,7 @@ import com.example.gtfurb.services.PessoaRelatorioService;
 @RequestMapping("/relatorioPessoa")
 public class PessoaRelatorioControllers {
 
-    private PessoaRelatorioService relatorioService;
+    private final PessoaRelatorioService relatorioService;
 
     public PessoaRelatorioControllers(PessoaRelatorioService relatorioService) {
         this.relatorioService = relatorioService;
@@ -34,9 +34,11 @@ public class PessoaRelatorioControllers {
     }
 
     @GetMapping("/{idPessoa}/{idRelatorio}")
-    public ResponseEntity<String> buscarRelatorio(@PathVariable Integer idPessoa, @PathVariable Integer idRelatorio) {
+    public ResponseEntity<PessoaRelatorio> buscarRelatorio(@PathVariable Integer idPessoa,
+            @PathVariable Integer idRelatorio) {
         PessoaRelatorioId id = new PessoaRelatorioId(idPessoa, idRelatorio);
-        return ResponseEntity.status(HttpStatus.OK).body(relatorioService.buscarPorId(id).getTxtRelatorio());
+        PessoaRelatorio relatorio = relatorioService.buscarPorId(id);
+        return ResponseEntity.ok(relatorio);
     }
 
     // POST
@@ -47,12 +49,13 @@ public class PessoaRelatorioControllers {
 
     // PUT
     @PutMapping("/{idPessoa}/{idRelatorio}")
-    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(@PathVariable Integer idPessoa,
-            @PathVariable Integer idRelatorio,
+    public ResponseEntity<PessoaRelatorio> atualizarRelatorio(
+            @PathVariable Integer idPessoa, @PathVariable Integer idRelatorio,
             @RequestBody PessoaRelatorio dadosAtualizados) {
         PessoaRelatorioId id = new PessoaRelatorioId(idPessoa, idRelatorio);
-        return ResponseEntity.status(HttpStatus.OK).body(
-                relatorioService.atualizar(id, dadosAtualizados.getTxtRelatorio(), dadosAtualizados.getTempoGasto()));
+        PessoaRelatorio relatorioAtualizado = relatorioService.atualizar(
+                id, dadosAtualizados.getTxtRelatorio(), dadosAtualizados.getTempoGasto());
+        return ResponseEntity.ok(relatorioAtualizado);
     }
 
     // DELETE

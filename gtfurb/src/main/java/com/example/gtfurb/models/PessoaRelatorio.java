@@ -31,12 +31,12 @@ public class PessoaRelatorio implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_pessoa", nullable = false, foreignKey = @ForeignKey(name = "pessoa_id_pessoa"))
-    private Pessoa pessoa;
+    private Pessoa idPessoa;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "id_relatorio", nullable = false, foreignKey = @ForeignKey(name = "relatorio_id_relatorio"))
-    private Relatorio relatorio;
+    private Relatorio idRelatorio;
 
     @NotBlank(message = "O campo de texto não pode estar vazio")
     @Size(max = 500, message = "O texto deve ter no máximo 5000 caracteres")
@@ -48,13 +48,5 @@ public class PessoaRelatorio implements Serializable {
 
     @Column(nullable = true)
     private Float tempoGasto;
-
-    public PessoaRelatorioId getPessoaRelatorioId() {
-        return pessoaRelatorioId;
-    }
-
-    public void setPessoaRelatorioId(PessoaRelatorioId pessoaRelatorioId) {
-        this.pessoaRelatorioId = pessoaRelatorioId;
-    }
 
 }

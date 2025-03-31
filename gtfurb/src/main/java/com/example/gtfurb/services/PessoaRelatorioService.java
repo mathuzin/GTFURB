@@ -57,16 +57,23 @@ public class PessoaRelatorioService {
             throw new IllegalArgumentException("Texto do relatório é obrigatório.");
         }
 
-        if (tmp_tempoRelatorio <= 0) {
-            throw new IllegalArgumentException("Tempo gasto do relatório deve ser maior que 0.");
+        Pessoa pessoa = pessoaRepository.findById(id.getIdPessoa())
+                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
+
+        if (pessoa.getTipoPessoa() == TipoPessoa.ALUNO) {
+            if (tmp_tempoRelatorio <= 0) {
+                throw new IllegalArgumentException("Tempo gasto deve ser maior que 0 para alunos.");
+            }
+        } else {
+            tmp_tempoRelatorio = 0f;
         }
 
-        PessoaRelatorio relatorio = buscarPorId(id);
+        int linhasAfetadas = relatorioRepository.atualizarPessoaRelatorio(id, novoTxt, tmp_tempoRelatorio);
+        if (linhasAfetadas == 0) {
+            throw new EntityNotFoundException("Relatório não encontrado para atualização.");
+        }
 
-        relatorio.setTxtRelatorio(novoTxt);
-        relatorio.setTempoGasto(tmp_tempoRelatorio);
-
-        return relatorioRepository.save(relatorio);
+        return buscarPorId(id);
     }
 
     public void deletar(PessoaRelatorioId id) {
