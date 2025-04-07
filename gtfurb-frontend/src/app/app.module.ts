@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterOutlet } from '@angular/router';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
     IonicModule.forRoot(),
     IonicModule.forRoot({}),
+    RouterOutlet
   ]
   ,
   providers: [],

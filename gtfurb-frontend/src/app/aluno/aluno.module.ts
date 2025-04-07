@@ -11,7 +11,7 @@ import { AlunoComponent } from './aluno.component';
   ],
   imports: [
     CommonModule,
-    AlunoRoutingModule
+   AlunoRoutingModule
   ]
 })
 export class AlunoModule { }
