@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class PessoaRelatorioId implements Serializable {
+    private Integer idPessoa; 
+    private Integer idRelatorio; 
 
-    private Integer idPessoa;
-    private Integer idRelatorio;
+
+    public PessoaRelatorioId() {}
 
     public PessoaRelatorioId(Integer idPessoa, Integer idRelatorio) {
         this.idPessoa = idPessoa;
@@ -15,7 +17,7 @@ public class PessoaRelatorioId implements Serializable {
 
     public Integer getIdPessoa() {
         return idPessoa;
-    }
+    } 
 
     public void setIdPessoa(Integer idPessoa) {
         this.idPessoa = idPessoa;

@@ -3,7 +3,10 @@ package com.example.gtfurb.models;
 import com.example.gtfurb.models.enums.TipoCurso;
 import com.example.gtfurb.models.enums.TipoPessoa;
 
+import java.util.List;
+
 import javax.persistence.*;
+
 import lombok.*;
 
 @Getter
@@ -35,4 +38,13 @@ public class Pessoa {
     @JoinColumn(name = "id_orientador", nullable = true)
     private Pessoa orientador;
 
+    @OneToMany(mappedBy = "orientador")
+    private List<Pessoa> alunos;
+
+    @PreRemove
+    private void preRemove() {
+        for (Pessoa aluno : alunos) {
+            aluno.setOrientador(null);
+        }
+    }
 }

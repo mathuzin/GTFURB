@@ -26,7 +26,10 @@ public class PessoaService {
     private PessoaRelatorioService pessoaRelatorioService;
 
     @Autowired
-    private RelatorioRepository relatorioService;
+    private RelatorioRepository relatorioRepository;
+
+    @Autowired
+    private RelatorioService relatorioService;
 
     public List<Pessoa> buscarCoordenadores() {
         return pessoaRepository.findByTipoPessoa(TipoPessoa.COORDENADOR);
@@ -99,13 +102,18 @@ public class PessoaService {
     }
 
     public Pessoa alterarPessoa(Integer idPessoa, String nomePessoa, String emailPessoa, Pessoa orientador) {
-
         Pessoa pessoa = pessoaRepository.findById(idPessoa)
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
 
-        pessoa.setNome(nomePessoa);
-        pessoa.setEmail(emailPessoa);
-        pessoa.setOrientador(orientador);
+        if (nomePessoa != null && !nomePessoa.isEmpty()) {
+            pessoa.setNome(nomePessoa);
+        }
+        if (emailPessoa != null && !emailPessoa.isEmpty()) {
+            pessoa.setEmail(emailPessoa);
+        }
+        if (orientador != null) {
+            pessoa.setOrientador(orientador);
+        }
 
         return pessoaRepository.save(pessoa);
     }
@@ -140,6 +148,6 @@ public class PessoaService {
     }
 
     public void deletarRelatorio(Integer id) {
-        relatorioService.deletar(id);
+        relatorioRepository.deleteById(id);
     }
 }

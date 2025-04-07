@@ -20,39 +20,43 @@ import com.example.gtfurb.services.RelatorioService;
 @RequestMapping("/relatorios")
 public class RelatorioController {
 
-    private final RelatorioService relatorioFinalService;
+    private final RelatorioService relatorioService;
 
-    public RelatorioController(RelatorioService relatorioFinalService) {
-        this.relatorioFinalService = relatorioFinalService;
+    public RelatorioController(RelatorioService relatorioService) {
+        this.relatorioService = relatorioService;
     }
 
     // GET
     @GetMapping
     public ResponseEntity<List<Relatorio>> listarTodos() {
-        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.listarTodos());
+        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioService.listarTodos());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<String> buscarRelatorio(@PathVariable Integer id) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.buscarPorId(id).getTxt_titulo());
+        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioService.buscarPorId(id).getTxt_titulo());
     }
 
     // POST
     @PostMapping
     public ResponseEntity<Relatorio> salvarRelatorio(@RequestBody Relatorio relatorioFinal) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.salvar(relatorioFinal));
+        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioService.salvar(relatorioFinal));
     }
 
     // PUT
     @PutMapping("/{id}")
-    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Integer id, @RequestBody String novosDados) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioFinalService.atualizar(id, novosDados));
+    public ResponseEntity<Relatorio> atualizarRelatorio(@PathVariable Integer id,
+            @RequestBody Relatorio dadosAtualizados) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.relatorioService.atualizar(id,
+                dadosAtualizados.getTxt_titulo(),
+                dadosAtualizados.getDataInicio(),
+                dadosAtualizados.getDataTermino()));
     }
 
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirRelatorio(@PathVariable Integer id) {
-        relatorioFinalService.deletar(id);
+        relatorioService.deletar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
