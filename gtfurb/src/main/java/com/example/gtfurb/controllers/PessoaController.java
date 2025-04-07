@@ -1,19 +1,28 @@
 package com.example.gtfurb.controllers;
 
-import com.example.gtfurb.models.Pessoa;
-import com.example.gtfurb.models.PessoaRelatorio;
-import com.example.gtfurb.models.PessoaRelatorioId;
-import com.example.gtfurb.models.Relatorio;
-import com.example.gtfurb.services.PessoaService;
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
-import java.util.List;
+import com.example.gtfurb.models.Pessoa;
+import com.example.gtfurb.models.PessoaRelatorio;
+import com.example.gtfurb.models.PessoaRelatorioId;
+import com.example.gtfurb.models.Relatorio;
+import com.example.gtfurb.services.PessoaService;
 
 @Controller
 @RequestMapping("/pessoa")
@@ -133,4 +142,10 @@ public class PessoaController {
         pessoaService.deletarRelatorio(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping
+    public ResponseEntity<String> saudacoes() {
+        return ResponseEntity.ok("API de pessoas funcionando!");
+    }
+
 }

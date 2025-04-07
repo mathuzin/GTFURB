@@ -2,7 +2,6 @@ package com.example.gtfurb.configuracao;
 
 import java.util.Collections;
 
-import com.example.gtfurb.internationalization.LocaleFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +18,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.example.gtfurb.internationalization.LocaleFilter;
 import com.example.gtfurb.security.AutenticacaoFiltroJWT;
 import com.example.gtfurb.security.AutorizacaoFiltroJWT;
 import com.example.gtfurb.security.UtilJWT;
@@ -36,16 +36,21 @@ public class SegurancaJWT extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UtilJWT jwtUtil;
 
-	private static final String[] PUBLIC_MATCHERS = { //
-			"/swagger-ui/**", "/v3/api-docs/**", //
-			"/api/usuarios/{id}/alterar_senha" //
-	};
+private static final String[] PUBLIC_MATCHERS = {
+	"/swagger-ui/**",
+	"/v3/api-docs/**",
+	"/api/usuarios/**",  // <- alterado aqui
+	"/pessoa/**",
+	"/relatorio/**"
+};
+
 
 	private static final String[] PUBLIC_MATCHERS_POST = { "/usuarios", "/login" };
 
-	private static final String[] PUBLIC_MATCHER_GET = { "/*.js", "/*.js.map", "/*.html", "/", "/*.css", "/*.json",
-			"/*.woff2", "/*.woff", //
-			"/*.png", "/assets/**", "/svg/**", "/actuator/**" };
+	private static final String[] PUBLIC_MATCHER_GET = {
+  	  "/", "/index.html", "/**/*.html", "/**/*.js", "/**/*.css", "/**/*.map",
+ 	   "/**/*.json", "/**/*.png", "/**/*.woff2", "/**/*.woff", "/assets/**", "/svg/**", "/actuator/**"
+	};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
