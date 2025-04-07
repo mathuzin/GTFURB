@@ -1,0 +1,90 @@
+:host {
+  display: block;
+  height: 100vh;
+  background-image: url("https://www.furb.br/_upl/images/multimidia/Fundos%20PPT-01.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  margin: 10px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  position: relative;
+  background-color: white;
+  padding: 40px 30px 80px 30px;
+  border-radius: 20px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.login-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+}
+
+.login-title {
+  margin-top: 100px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 20px;
+  background-color: rgb(0, 35, 102);
+}
+
+.form-group > label {
+  bottom: 34px;
+  left: 15px;
+  position: relative;
+  padding: 0px 5px 0px 5px;
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1.1em;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.form-control:focus ~ label {
+  bottom: 60px;
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.form-control:valid ~ label {
+  bottom: 55px;
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.form-control {
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.473);
+  border-radius: 1;
+  box-shadow: none;
+  background-color: rgb(236, 232, 232);
+}
+
+.form-control:focus {
+  border-bottom: 2px solid black;
+  outline: none;
+  box-shadow: none;
+  background-color: rgb(236, 232, 232);
+}
