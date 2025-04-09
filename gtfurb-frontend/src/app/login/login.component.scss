@@ -7,7 +7,15 @@
 }
 
 body {
-  margin: 10px;
+  margin: 2.5%;
+}
+
+.form-group small {
+  position: absolute;
+  bottom: -1.9em;
+  left: 0.5em;
+  font-size: 0.85em;
+  color: red;
 }
 
 .login-container {
@@ -20,23 +28,24 @@ body {
 .login-box {
   position: relative;
   background-color: white;
-  padding: 40px 30px 80px 30px;
-  border-radius: 20px;
-  width: 400px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 5% 7.5%;
+  border-radius: 5%;
+  width: 95vw;
+  max-width: 600px;
+  box-shadow: 0 0 2.5% rgba(0, 0, 0, 0.1);
   color: black;
 }
 
 .login-logo {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 150px;
+  top: 5%;
+  left: 5%;
+  width: 37.5%;
 }
 
 .login-title {
-  margin-top: 100px;
-  margin-bottom: 30px;
+  margin-top: 25%;
+  margin-bottom: 7.5%;
   text-align: left;
   font-weight: bold;
   color: #333;
@@ -44,47 +53,117 @@ body {
 
 .login-button {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  border-radius: 20px;
+  bottom: 5%;
+  right: 5%;
+  border-radius: 10%;
   background-color: rgb(0, 35, 102);
+  padding: 0.8em 2em;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 3.5vh;
 }
 
 .form-group > label {
-  bottom: 34px;
-  left: 15px;
-  position: relative;
-  padding: 0px 5px 0px 5px;
-  font-size: 0.9em;
-  color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 17%;
+  left: 5%;
+  padding: 1% 1%;
   font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.4);
   transition: 0.2s;
   pointer-events: none;
+  background-color: white;
 }
 
-.form-control:focus ~ label {
-  bottom: 60px;
+.form-control:focus ~ label,
+.form-control:valid ~ label {
+  bottom: 80%;
   font-size: 0.75em;
   color: rgba(0, 0, 0, 0.85);
 }
 
-.form-control:valid ~ label {
-  bottom: 55px;
+.form-control:focus ~ .lableSenha,
+.form-control:valid ~ .lableSenha {
+  bottom: 80%;
   font-size: 0.75em;
   color: rgba(0, 0, 0, 0.85);
 }
 
 .form-control {
-  border: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.473);
-  border-radius: 1;
+  width: 100%;
+  padding: 3% 4%;
+  font-size: 1em;
+  border: 0.15em solid rgba(0, 0, 0, 0.473);
+  border-radius: 0.5em;
+  background-color: white;
   box-shadow: none;
-  background-color: rgb(236, 232, 232);
+  outline: none;
 }
 
 .form-control:focus {
-  border-bottom: 2px solid black;
-  outline: none;
-  box-shadow: none;
-  background-color: rgb(236, 232, 232);
+  border: 0.15em solid black;
+}
+
+.esqueceu-senha {
+  color: blue;
+  font-size: 0.85em;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 2.5%;
+  margin-left: 2%;
+}
+
+.esqueceu-senha:hover {
+  text-decoration: underline;
+  color: darkblue;
+}
+
+.senha-group {
+  position: relative;
+
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    transition: filter 0.2s ease-in-out;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  .toggle-password:hover {
+    filter: drop-shadow(0 0 4px rgba(63, 61, 61, 0.521));
+  }
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper > label {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  padding: 0 0.2em;
+  font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  background-color: white;
+}
+
+.input-wrapper > .form-control:focus ~ label,
+.input-wrapper > .form-control:valid ~ label {
+  bottom: 80%;
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.85);
 }
