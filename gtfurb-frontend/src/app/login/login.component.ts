@@ -32,27 +32,20 @@ export class LoginComponent implements OnInit {
       const senha = this.loginForm.value.senha;
 
       this.loginService.loginExiste(email, senha).subscribe({
-        next: (res) => {
-          if (res && res.length > 0) {
-            const usuario = res[0];
-            console.log('Usuário encontrado:', usuario);
+        next: (usuario) => {
+          console.log('Usuário encontrado:', usuario);
 
-            if (usuario.tipo_pessoa === 'coordenador') {
-              this.router.navigate(['/home-coordenador']);
-            } else if (usuario.tipo_pessoa === 'orientador') {
-              this.router.navigate(['/home-orientador']);
-            } else {
-              this.router.navigate(['/home-aluno']);
-            }
+          if (usuario.tipoPessoa === 'COORDENADOR') {
+            this.router.navigate(['/home-coordenador']);
+          } else if (usuario.tipoPessoa === 'ORIENTADOR') {
+            this.router.navigate(['/home-orientador']);
           } else {
-            alert('Email ou senha inválidos');
+            this.router.navigate(['/home-aluno']);
           }
         },
         error: (err) => {
           console.error('Erro na requisição:', err);
-          alert(
-            'Erro ao tentar logar. Verifique sua conexão ou tente novamente.'
-          );
+          alert('Email ou senha inválidos');
         },
       });
     } else {

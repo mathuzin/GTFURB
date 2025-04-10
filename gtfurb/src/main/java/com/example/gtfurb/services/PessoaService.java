@@ -2,6 +2,7 @@ package com.example.gtfurb.services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -30,6 +31,10 @@ public class PessoaService {
 
     @Autowired
     private RelatorioService relatorioService;
+
+    public Optional<Pessoa> login(String email, String senha) {
+        return pessoaRepository.findByEmailAndSenha(email, senha);
+    }
 
     public List<Pessoa> buscarCoordenadores() {
         return pessoaRepository.findByTipoPessoa(TipoPessoa.COORDENADOR);

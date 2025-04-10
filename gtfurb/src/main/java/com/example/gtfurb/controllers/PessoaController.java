@@ -2,8 +2,7 @@ package com.example.gtfurb.controllers;
 
 import java.time.LocalDate;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +31,12 @@ public class PessoaController {
     private PessoaService pessoaService;
 
     // GET
+    @GetMapping("/login")
+    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String senha) {
+        Optional<Pessoa> pessoa = pessoaService.login(email, senha);
+        return ResponseEntity.status(HttpStatus.OK).body(pessoa);
+    }
+
     @GetMapping("/coordenadores")
     public List<Pessoa> buscarCoordenadores() {
         return pessoaService.buscarCoordenadores();
