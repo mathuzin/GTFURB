@@ -1,14 +1,26 @@
-.d-flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
+// .d-flex-center {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100%;
+// }
 
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+}
 .displayPrincipal {
   display: flex;
   min-height: 100vh;
   background-color: #E3EAEE;
+}
+
+table {
+  border-collapse: collapse;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 95%;
 }
 
 
