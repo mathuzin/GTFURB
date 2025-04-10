@@ -10,19 +10,19 @@
   <li style="margin-bottom: 50px;"></li>
     <li class="nav-item">
       <a class="nav-link" routerLink="">
-        <img class="imgIcon" src="assets/homeBotao.png">
+        <img class="imgIcon" src="assets/homeBotao.png" (click)="direcionarInicio()">
         <span class="nav-text" *ngIf="navExpandida">Inicio</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="relatorios">
-        <img class="imgIcon" src="assets/relatoriosBotao.png">
+        <img class="imgIcon" src="assets/relatoriosBotao.png" (click)="direcionarRelatorio()">
         <span class="nav-text" *ngIf="navExpandida">Relatórios</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="avisos">
-        <img class="imgIcon" src="assets/avisosBotao.png" routerLink="avisos">
+        <img class="imgIcon" src="assets/avisosBotao.png" routerLink="avisos" (click)="direcionarAvisos()">
         <span class="nav-text" *ngIf="navExpandida">Avisos</span>
       </a>
     </li>
