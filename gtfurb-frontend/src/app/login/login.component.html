@@ -23,12 +23,15 @@
           loginForm.get('email')?.invalid && loginForm.get('email')?.touched
         "
       >
-        <span *ngIf="loginForm.get('email')?.errors?.['required']"
-          >Email é obrigatório.</span
-        >
-        <span *ngIf="loginForm.get('email')?.errors?.['email']"
-          >Formato de email inválido.</span
-        >
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email é obrigatório.
+        </span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">
+          Formato de email inválido.
+        </span>
+        <span *ngIf="loginForm.get('email')?.errors?.['pattern']">
+          Email não segue o padrão esperado.
+        </span>
       </small>
     </div>
 
@@ -97,6 +100,6 @@
 
     <a href="#" target="_blank" class="esqueceu-senha">Esqueceu a senha?</a>
 
-    <button type="submit" class="btn btn-primary login-button">Entrar</button>
+    <button type="submit" class="btn btn-primary login-button" (click)="onSubmit()">Entrar</button>
   </form>
 </div>

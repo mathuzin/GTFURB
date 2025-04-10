@@ -8,6 +8,11 @@ const routes: Routes = [
       import('./aluno/aluno.module').then((m) => m.AlunoModule),
   },
   {
+    path: 'orientador',
+    loadChildren: () =>
+      import('./orientador/orientador.module').then((m) => m.OrientadorModule),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
