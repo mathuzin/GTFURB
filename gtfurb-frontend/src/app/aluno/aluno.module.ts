@@ -17,7 +17,7 @@ import { NavRailAlunoComponent } from './nav-rail-aluno/nav-rail-aluno.component
   ],
   imports: [
     CommonModule,
-    AlunoRoutingModule
+    AlunoRoutingModule,
   ]
 })
 export class AlunoModule { }
