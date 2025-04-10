@@ -142,10 +142,4 @@ public class PessoaController {
         pessoaService.deletarRelatorio(id);
         return ResponseEntity.noContent().build();
     }
-
-    @GetMapping
-    public ResponseEntity<String> saudacoes() {
-        return ResponseEntity.ok("API de pessoas funcionando!");
-    }
-
 }

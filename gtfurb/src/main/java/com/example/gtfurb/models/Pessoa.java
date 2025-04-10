@@ -26,6 +26,9 @@ public class Pessoa {
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
+    @Column(nullable = false, length = 100)
+    private String senha;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_pessoa", nullable = false)
     private TipoPessoa tipoPessoa;
@@ -33,6 +36,9 @@ public class Pessoa {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_curso", nullable = true)
     private TipoCurso tipoCurso;
+
+    @Column(nullable = false)
+    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "id_orientador", nullable = true)

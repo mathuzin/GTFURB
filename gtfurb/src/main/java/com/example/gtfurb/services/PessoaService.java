@@ -70,13 +70,15 @@ public class PessoaService {
     public Pessoa criarAluno(Pessoa aluno) {
 
         if (aluno.getNome() == null || aluno.getNome().isEmpty() || aluno.getEmail() == null
-                || aluno.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
+                || aluno.getEmail().isEmpty() || aluno.getSenha().isEmpty() || aluno.getSenha() == null) {
+            throw new IllegalArgumentException("Nome, e-mail e senha são obrigatórios.");
         }
 
         if (aluno.getTipoPessoa() == TipoPessoa.ALUNO && aluno.getOrientador() == null) {
             throw new IllegalArgumentException("Orientador é obrigatório para alunos.");
         }
+
+        aluno.setStatus(true);
 
         return pessoaRepository.save(aluno);
     }
@@ -84,9 +86,12 @@ public class PessoaService {
     public Pessoa criarOrientador(Pessoa orientador) {
 
         if (orientador.getNome() == null || orientador.getNome().isEmpty() || orientador.getEmail() == null
-                || orientador.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
+                || orientador.getEmail().isEmpty() || orientador.getSenha().isEmpty()
+                || orientador.getSenha() == null) {
+            throw new IllegalArgumentException("Nome, e-mail e senha são obrigatórios.");
         }
+
+        orientador.setStatus(true);
 
         return pessoaRepository.save(orientador);
     }
@@ -94,9 +99,12 @@ public class PessoaService {
     public Pessoa criarCoordenador(Pessoa coordenador) {
 
         if (coordenador.getNome() == null || coordenador.getNome().isEmpty() || coordenador.getEmail() == null
-                || coordenador.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("Nome e e-mail são obrigatórios.");
+                || coordenador.getEmail().isEmpty() || coordenador.getSenha().isEmpty()
+                || coordenador.getSenha() == null) {
+            throw new IllegalArgumentException("Nome, e-mail e senha são obrigatórios.");
         }
+
+        coordenador.setStatus(true);
 
         return pessoaRepository.save(coordenador);
     }
@@ -122,6 +130,8 @@ public class PessoaService {
 
         Pessoa pessoa = pessoaRepository.findById(idPessoa)
                 .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
+
+        pessoa.setStatus(false);
 
         pessoaRepository.delete(pessoa);
     }
