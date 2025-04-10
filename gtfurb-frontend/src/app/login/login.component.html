@@ -23,12 +23,15 @@
           loginForm.get('email')?.invalid && loginForm.get('email')?.touched
         "
       >
-        <span *ngIf="loginForm.get('email')?.errors?.['required']"
-          >Email é obrigatório.</span
-        >
-        <span *ngIf="loginForm.get('email')?.errors?.['email']"
-          >Formato de email inválido.</span
-        >
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email é obrigatório.
+        </span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">
+          Formato de email inválido.
+        </span>
+        <span *ngIf="loginForm.get('email')?.errors?.['pattern']">
+          Email não segue o padrão esperado.
+        </span>
       </small>
     </div>
 
