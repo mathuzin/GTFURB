@@ -33,20 +33,17 @@
 }
 
 .navRailOrientador {
-  height: 100vh;
   background-color: white;
   // min-width: 100px;
   // width: 75px;
   padding-top: 2rem;
   overflow: hidden;
-  transition: width 0.5s ease;
+  transition: width 0.3s ease;
+  height: 100vh;
 }
 
 .navRailOrientador.expandida {
-  height: 100vh;
   max-width: 300px;
-  background-color: white;
-  transition: width 0.3s ease;
 }
 
 .nav-text {
@@ -57,5 +54,3 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
-
