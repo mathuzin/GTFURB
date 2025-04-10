@@ -1,0 +1,31 @@
+<div class="navRailOrientador" [ngClass]="{ 'expandida': navExpandida }">
+  <ul class="nav flex-column">
+    <li>
+      <a class="nav-link">
+        <div class="d-flex-center">
+          <img src="assets/cardapioBotao.png" class="imgCardapio" (click)="toggleNav()">
+        </div>
+      </a>
+    </li>
+  <li style="margin-bottom: 50px;"></li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="">
+        <img class="imgIcon" src="assets/homeBotao.png">
+        <span class="nav-text" *ngIf="navExpandida">Início</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="relatorios">
+        <img class="imgIcon" src="assets/relatoriosBotao.png">
+        <span class="nav-text" *ngIf="navExpandida">Relatórios</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="avisos">
+        <img class="imgIcon" src="assets/avisosBotao.png" routerLink="avisos">
+        <span class="nav-text" *ngIf="navExpandida">Avisos</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
