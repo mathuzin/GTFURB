@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 
-const routes: Routes = [{ path: '', component: LoginComponent }];
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  {
+    path: 'aluno',
+    loadChildren: () =>
+      import('../aluno/aluno.module').then((m) => m.AlunoModule),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

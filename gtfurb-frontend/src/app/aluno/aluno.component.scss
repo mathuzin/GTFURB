@@ -1,0 +1,47 @@
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.displayPrincipal {
+  display: flex;
+  min-height: 100vh;
+  background-color: #E3EAEE;
+}
+
+
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // margin-top: 5%;
+  padding: 2rem;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 2rem;
+  min-width: 25%;
+}
+
+.button-card {
+  background-color: #008CBA;
+}
+
