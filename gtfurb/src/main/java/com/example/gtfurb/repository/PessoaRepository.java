@@ -15,6 +15,9 @@ import com.example.gtfurb.models.enums.TipoPessoa;
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
+    @Query("SELECT p FROM Pessoa p WHERE p.email = :email AND p.senha = :senha")
+    Optional<Pessoa> findByEmailAndSenha(String email, String senha);
+
     @Query("SELECT p FROM Pessoa p WHERE p.tipoPessoa = :tipoPessoa")
     List<Pessoa> findByTipoPessoa(TipoPessoa tipoPessoa);
 

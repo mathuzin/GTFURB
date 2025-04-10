@@ -11,7 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   loginExiste(email: string, senha: string): Observable<any> {
-    return this.http.get(`${this.BDUrl}/usuarios`, {
+    return this.http.get(`${this.BDUrl}/pessoa/login`, {
       params: {
         email: email,
         senha: senha,
