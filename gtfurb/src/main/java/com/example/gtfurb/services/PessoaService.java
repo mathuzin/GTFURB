@@ -44,6 +44,10 @@ public class PessoaService {
         return pessoaRepository.findByTipoPessoa(TipoPessoa.ORIENTADOR);
     }
 
+    public boolean existeOrientadorComEmail(String email) {
+        return pessoaRepository.existeOrientadorComEmail(email);
+    }
+
     public Pessoa buscarOrientadorPeloId(Integer idOrientador) {
         Pessoa orientador = pessoaRepository.findById(idOrientador)
                 .orElseThrow(() -> new EntityNotFoundException("Orientador não encontrado."));

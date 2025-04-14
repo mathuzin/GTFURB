@@ -33,6 +33,9 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
     @Query("SELECT p FROM Pessoa p WHERE p.id = :id AND p.tipoPessoa = 'COORDENADOR'")
     Optional<Pessoa> findCoordenadorById(Integer id);
 
+    @Query("SELECT COUNT(p) > 0 FROM Pessoa p WHERE p.email = :email AND p.tipoPessoa = 'ORIENTADOR'")
+    boolean existeOrientadorComEmail(String email);
+
     @Transactional
     @Modifying
     @Query("UPDATE Pessoa p SET p.nome = :nome, p.email = :email, p.orientador = :orientador WHERE p.id = :id")

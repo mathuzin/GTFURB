@@ -5,7 +5,7 @@ import { OrientadorRelatorioComponent } from './orientador-relatorio/orientador-
 import { OrientadorAvisosComponent } from './orientador-avisos/orientador-avisos.component';
 
 const routes: Routes = [
-  { path: '', component: OrientadorComponent }, // Quando coloca orientador ele aparece a pagina mas quando clica na img ele não volta pra ela
+  { path: '', component: OrientadorComponent },
   { path: 'relatorios', component: OrientadorRelatorioComponent },
   { path: 'avisos', component: OrientadorAvisosComponent },
 ];

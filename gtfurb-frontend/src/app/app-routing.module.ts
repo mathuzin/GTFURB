@@ -13,6 +13,13 @@ const routes: Routes = [
       import('./orientador/orientador.module').then((m) => m.OrientadorModule),
   },
   {
+    path: 'coordenador',
+    loadChildren: () =>
+      import('./coordenador/coordenador.module').then(
+        (m) => m.CoordenadorModule
+      ),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),

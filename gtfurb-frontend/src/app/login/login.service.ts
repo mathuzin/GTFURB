@@ -18,4 +18,10 @@ export class LoginService {
       },
     });
   }
+
+  verificaSeEhOrientador(email: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.BDUrl}/orientador-existe`, {
+      params: { email: email },
+    });
+  }
 }

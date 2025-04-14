@@ -69,6 +69,12 @@ public class PessoaController {
         return pessoaService.buscarAlunosPorOrientador(id);
     }
 
+    @GetMapping("/orientador-existe")
+    public ResponseEntity<Boolean> verificarSeEhOrientador(@RequestParam String email) {
+        boolean existe = pessoaService.existeOrientadorComEmail(email);
+        return ResponseEntity.ok(existe);
+    }
+
     // POST
     @PostMapping("/aluno")
     public ResponseEntity<Pessoa> criarAluno(@RequestBody Pessoa aluno) {

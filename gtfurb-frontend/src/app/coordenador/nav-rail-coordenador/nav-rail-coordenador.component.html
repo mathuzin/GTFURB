@@ -1,0 +1,56 @@
+<div class="navRailOrientador" [ngClass]="{ 'expandida': navExpandida }">
+  <ul class="nav flex-column">
+    <li>
+      <a class="nav-link">
+        <div class="d-flex-center">
+          <img src="assets/cardapioBotao.png" class="imgCardapio" (click)="toggleNav()">
+        </div>
+      </a>
+    </li>
+  <li style="margin-bottom: 50px;"></li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="'/coordenador'">
+        <img class="imgIcon" src="assets/homeBotao.png">
+        <span class="nav-text" *ngIf="navExpandida">Inicio</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="coordenadorExpandido = !coordenadorExpandido">
+        <img class="imgIcon" src="assets/coordenador.png">
+        <span class="nav-text" *ngIf="navExpandida">Coordenador</span>
+      </a>
+      <ul *ngIf="coordenadorExpandido && navExpandida" class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/coordenador/relatorios'">
+            <img class="imgIcon" src="assets/relatoriosBotao.png">
+            <span class="nav-text">Relatórios</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="coordenadorOrientadorExpandido = !coordenadorOrientadorExpandido">
+        <img class="imgIcon" src="assets/orientador.png">
+        <span class="nav-text" *ngIf="navExpandida">Orientador</span>
+      </a>
+      <ul *ngIf="coordenadorOrientadorExpandido && navExpandida" class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/orientador/relatorios'">
+            <img class="imgIcon" src="assets/relatoriosBotao.png">
+            <span class="nav-text">Relatórios</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="'/coordenador/avisos'">
+        <img class="imgIcon" src="assets/avisosBotao.png">
+        <span class="nav-text" *ngIf="navExpandida">Avisos</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
