@@ -1,3 +1,43 @@
 <div class="displayPrincipal" style="display: flex; background-color: #E3EAEE;">
   <app-nav-rail-aluno></app-nav-rail-aluno>
+  <div class="conteudo">
+    <div>
+      <h1 style="color: Black; font-size: 3rem;">Relatorios Parciais</h1>
+      <div style="display: flex">
+        <button type="button" class="btn btn-primary">
+          <i class="bi bi-pencil"></i>
+          Escrever relatorio</button>
+        <button type="button" class="btn btn-info" style="margin-left: 1vh; color: white">
+          <i class="bi bi-card-text"></i>
+          Ver relatorio completo
+        </button>
+      </div>
+      <div class="card" style="margin-top: 2%; overflow: hidden;">
+        <table class="table" style="border-radius: 12px;" >
+          <thead>
+            <tr>
+              <th scope="col">Titulo</th>
+              <th scope="col">Data de inicio</th>
+              <th scope="col">Data de termino</th>
+              <th scope="col">Relatorio de Aluno</th>
+              <th scope="col">Parecer do Orientador</th>
+              <th scope="col">Avaliacao do Coordenador</th>
+              <th scope="col">Status de Aprovacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rel of relatorios">
+              <th scope="row">{{ rel.titulo}}</th>
+              <td>{{ rel.inicio}}</td>
+              <td>{{ rel.termino }}</td>
+              <td>{{ rel.aluno }}</td>
+              <td>{{ rel.orientador}}</td>
+              <td>{{ rel.coordenador }}</td>
+              <td>{{ rel. status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
