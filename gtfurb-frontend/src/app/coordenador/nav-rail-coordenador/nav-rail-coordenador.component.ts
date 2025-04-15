@@ -14,6 +14,8 @@ export class NavRailCoordenadorComponent implements OnInit {
   navExpandida = false;
   coordenadorExpandido = false;
   coordenadorOrientadorExpandido = false;
+  adicionarExpandido = false;
+
 
   toggleNav() {
     this.navExpandida = !this.navExpandida;
@@ -22,8 +24,12 @@ export class NavRailCoordenadorComponent implements OnInit {
       this.coordenadorExpandido = false;
     }
 
-    if (this.navExpandida){
+    if (!this.navExpandida) {
       this.coordenadorOrientadorExpandido = false;
+    }
+
+    if (!this.navExpandida){
+      this.adicionarExpandido = false;
     }
   }
 }
