@@ -1,3 +1,179 @@
-<p>
-  coordenador-cadastro-pessoa works!
-</p>
+<div class="displayPrincipal" style="display: flex; background-color: #e3eaee">
+  <app-nav-rail-coordenador-orientador></app-nav-rail-coordenador-orientador>
+  <div class="conteudo">
+    <div>
+      <h1 style="color: Black; font-size: 3rem">Cadastrar Novo Usuário</h1>
+      <div style="display: flex">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="cadastrarPessoaAbrir()"
+        >
+          <i class="bi bi-person-plus"></i>
+          Adicionar novo usuário
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          style="margin-left: 1vh; color: white"
+          (click)="buscarPorFiltroAbrir()"
+        >
+          <i class="bi bi-search"></i>
+          Pesquisar por filtros
+        </button>
+      </div>
+
+      <div class="modal-custom" *ngIf="telaCadastro">
+        <div class="modal-content-custom">
+          <h3>Cadastro de Pessoa</h3>
+          <br />
+
+          <form [formGroup]="form">
+            <div class="inputsNomeEmail">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="nome"
+                  id="nome"
+                  required
+                />
+                <label for="nome">Nome*</label>
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="email"
+                  id="email"
+                  required
+                />
+                <label for="email">Email*</label>
+              </div>
+            </div>
+          </form>
+
+          <h5>Selecione o cargo</h5>
+          <div class="cargo-container">
+            <button
+              class="cargo-button"
+              [class.selecionado]="cargoSelecionado === 'Aluno'"
+              [class.turvo]="cargoSelecionado && cargoSelecionado !== 'Aluno'"
+              (click)="selecionarCargo('Aluno')"
+            >
+              Aluno
+            </button>
+
+            <button
+              class="cargo-button"
+              [class.selecionado]="
+                cargoSelecionado === 'Orientador' ||
+                (cargoSelecionado === 'Coordenador' &&
+                  coordenadorAcumula === 'Orientador')
+              "
+              [class.turvo]="
+                cargoSelecionado &&
+                cargoSelecionado !== 'Orientador' &&
+                !(
+                  cargoSelecionado === 'Coordenador' &&
+                  coordenadorAcumula === 'Orientador'
+                )
+              "
+              (click)="selecionarCargo('Orientador')"
+            >
+              Orientador
+            </button>
+
+            <button
+              class="cargo-button"
+              [class.selecionado]="cargoSelecionado === 'Coordenador'"
+              [class.turvo]="
+                cargoSelecionado && cargoSelecionado !== 'Coordenador'
+              "
+              (click)="selecionarCargo('Coordenador')"
+            >
+              Coordenador
+            </button>
+          </div>
+
+          <h5>Curso</h5>
+
+          <div class="cursoContainer" *ngIf="cargoSelecionado === 'Aluno'">
+            <button
+              class="curso-button"
+              [class.selecionado]="cursoSelecionado === 'BCC'"
+              (click)="selecionarCurso('BCC')"
+            >
+              Ciências da Computação
+            </button>
+
+            <button
+              class="curso-button"
+              [class.selecionado]="cursoSelecionado === 'SIS'"
+              (click)="selecionarCurso('SIS')"
+            >
+              Sistemas da Informação
+            </button>
+          </div>
+
+          <div class="dropdown-container">
+            <label for="select">Escolha um Orientador</label>
+            <div class="dropdown-wrapper">
+              <select id="select">
+                <option></option>
+                <option value="1">Orientador 1</option>
+                <option value="2">Orientador 2</option>
+                <option value="3">Orientador 3</option>
+              </select>
+              <span class="dropdown-arrow"></span>
+            </div>
+          </div>
+
+          <br />
+          <br />
+
+          <button class="btn btn-secondary" (click)="cadastrarPessoaFechar()">
+            Fechar
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-custom" *ngIf="telaFiltro">
+        <div class="modal-content-custom">
+          <h5>Pesquisar por Filtros</h5>
+          <button class="btn btn-secondary" (click)="buscarPorFiltroFechar()">
+            Fechar
+          </button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 2%; overflow: hidden">
+        <table class="table" style="border-radius: 12px">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Curso</th>
+              <th scope="col">Turma</th>
+              <th scope="col">Orientador</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rel of relatorios">
+              <th scope="row">{{ rel.nome }}</th>
+              <td>{{ rel.email }}</td>
+              <td>{{ rel.cargo }}</td>
+              <td>{{ rel.curso }}</td>
+              <td>{{ rel.turma }}</td>
+              <td>{{ rel.orientador }}</td>
+              <td>{{ rel.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,11 @@
       <a class="nav-img-link">
         <div class="d-flex-center">
           <img
+            class="furb-img"
+            src="assets/furbLogo.png"
+            *ngIf="navExpandida"
+          />
+          <img
             src="assets/cardapioBotao.png"
             class="imgCardapio"
             (click)="toggleNav()"
@@ -138,5 +143,4 @@
       </a>
     </li>
   </ul>
-  <img class="furb-img" src="assets/furbLogo.png" *ngIf="navExpandida" />
 </div>

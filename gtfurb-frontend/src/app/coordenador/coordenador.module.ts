@@ -11,6 +11,7 @@ import { CoordenadorEmailsComponent } from './coordenador-emails/coordenador-ema
 import { CoordenadorRelatorioComponent } from './coordenador-relatorio/coordenador-relatorio.component';
 import { NavRailCoordenadorOrientadorComponent } from './nav-rail-coordenador-orientador/nav-rail-coordenador-orientador.component';
 import { CoordenadorOrientadorRelatoriosComponent } from './coordenador-orientador-relatorios/coordenador-orientador-relatorios.component';
+import { FormControlName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { CoordenadorOrientadorRelatoriosComponent } from './coordenador-orientad
   ],
   imports: [
     CommonModule,
-    CoordenadorRoutingModule
+    CoordenadorRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class CoordenadorModule {}

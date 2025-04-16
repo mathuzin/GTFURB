@@ -1,34 +1,119 @@
-<div class="displayPrincipal" style="display: flex; background-color: #E3EAEE;">
+<div class="displayPrincipal" style="display: flex; background-color: #e3eaee">
   <!-- <app-nav-rail-coordenador *ngIf="!ehOrientador"></app-nav-rail-coordenador> -->
-  <app-nav-rail-coordenador-orientador *ngIf="!ehOrientador"></app-nav-rail-coordenador-orientador>
-    <div class="conteudo">
-      <img src="assets/GTFURBlogo.png" style="size: 75%">
-      <div class="d-flex justify-content-between gap-3">
-        <div class="card" style="width: 18rem;">
+  <app-nav-rail-coordenador-orientador
+    *ngIf="!ehOrientador"
+  ></app-nav-rail-coordenador-orientador>
+
+  <div class="conteudo" style="flex: 1; padding: 2rem">
+    <img class="logoGTFURB" src="assets/GTFURBlogo.png" style="width: 75%; margin-bottom: 2rem" />
+
+    <div class="blocos d-flex justify-content-between gap-4">
+
+      <div class="bloco">
+        <div class="card card-igual">
           <div class="card-body">
-            <h4 class="card-title"><b>Relatórios Parciais</b></h4>
-            <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at ultrices nunc. Sed
-              interdum ut purus quis cursus.
-              Sed in interdum elit, sed dignissim elit. Vivamus erat est, ultrices nec volutpat nec, volutpat vel lectus.
-              Donec interdum finibus ipsum, vel sodales nibh.
+            <h4 class="card-title"><b>Cadastrar Pessoa</b></h4>
+            <p class="card-text">
+              Cadastre um novo aluno, orientador ou coordenador no sistema.
             </p>
-            <div style="display: flex; justify-content: flex-end;">
-              <button type="button" class="btn btn-primary">Acessar</button>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="'/coordenador/avisos'"
+              >
+                Acessar
+              </button>
             </div>
           </div>
         </div>
-        <div class="card" style="width: 18rem;">
+
+        <div class="card card-igual">
           <div class="card-body">
-            <h4 class="card-title"><b>Avisos</b></h4>
-            <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at ultrices nunc. Sed
-              interdum ut purus quis cursus.
-              Sed in interdum elit, sed dignissim elit. Vivamus erat est, ultrices nec volutpat nec, volutpat vel lectus.
-              Donec interdum finibus ipsum, vel sodales nibh.
-            </p>
-            <div style="display: flex; justify-content: flex-end;">
-              <button type="button" class="btn btn-primary">Acessar</button>
+            <h4 class="card-title"><b>Cadastrar Turma</b></h4>
+            <p class="card-text">Cadastre uma nova turma no sistema.</p>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="'/coordenador/avisos'"
+              >
+                Acessar
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <router-outlet></router-outlet>
+
+      <div class="bloco">
+        <div class="card card-igual">
+          <div class="card-body">
+            <h4 class="card-title"><b>Relatórios Parciais - Orientador</b></h4>
+            <p class="card-text">
+              Acesse os relatórios de TCC escritos por seus alunos.
+            </p>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-primary" [routerLink]="''">
+                Acessar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-igual">
+          <div class="card-body">
+            <h4 class="card-title"><b>Relatórios Parciais - Coordenador</b></h4>
+            <p class="card-text">
+              Acesse os relatórios de TCC escritos pelos alunos e orientadores.
+            </p>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="'/coordenador/avisos'"
+              >
+                Acessar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloco">
+        <div class="card card-igual">
+          <div class="card-body">
+            <h4 class="card-title"><b>Avisos</b></h4>
+            <p class="card-text">Veja as notificações que te esperam.</p>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="'/coordenador/avisos'"
+              >
+                Acessar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-igual">
+          <div class="card-body">
+            <h4 class="card-title"><b>Emails Enviados</b></h4>
+            <p class="card-text">Visualize os emails que foram enviados.</p>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="'/coordenador/avisos'"
+              >
+                Acessar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>

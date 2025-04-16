@@ -1,8 +1,12 @@
 .furb-img {
-  margin-top: 15em;
   height: 3em;
 }
 
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .imgIcon {
   height: 2.3em;
@@ -36,7 +40,7 @@
 .navRailCoordenador.expandida .imgCardapio {
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 13em;
+  margin-left: 6em;
 }
 
 // .imgCardapio:hover {
@@ -52,8 +56,8 @@
   transition: transform 0.3s ease;
   transform-origin: center center;
   margin-left: auto;
+  cursor: pointer;
 }
-
 
 .ImgSeta.rotacionada {
   transform: rotate(-90deg);
