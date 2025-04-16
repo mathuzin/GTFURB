@@ -6,6 +6,7 @@ import { AlunoComponent } from './aluno.component';
 import { AlunoRelatorioComponent } from './aluno-relatorio/aluno-relatorio.component';
 import { AlunoAvisosComponent } from './aluno-avisos/aluno-avisos.component';
 import { NavRailAlunoComponent } from './nav-rail-aluno/nav-rail-aluno.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NavRailAlunoComponent } from './nav-rail-aluno/nav-rail-aluno.component
   imports: [
     CommonModule,
     AlunoRoutingModule,
+    FormsModule
   ]
 })
 export class AlunoModule { }

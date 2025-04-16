@@ -4,16 +4,16 @@
     <div>
       <h1 style="color: Black; font-size: 3rem;">Relatorios Parciais</h1>
       <div style="display: flex">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#criarRelatorioModal">
           <i class="bi bi-pencil"></i>
           Escrever relatorio</button>
-        <button type="button" class="btn btn-info" style="margin-left: 1vh; color: white">
-          <i class="bi bi-card-text"></i>
-          Ver relatorio completo
-        </button>
+        <!-- <button type="button" class="btn btn-info" style="margin-left: 1vh; color: white"> -->
+        <!--   <i class="bi bi-card-text"></i> -->
+        <!--   Ver relatorio completo -->
+        <!-- </button> -->
       </div>
       <div class="card" style="margin-top: 2%; overflow: hidden;">
-        <table class="table" style="border-radius: 12px;" >
+        <table class="table table-hover" style="border-radius: 12px;">
           <thead>
             <tr>
               <th scope="col">Titulo</th>
@@ -30,13 +30,67 @@
               <th scope="row">{{ rel.titulo}}</th>
               <td>{{ rel.inicio}}</td>
               <td>{{ rel.termino }}</td>
-              <td>{{ rel.aluno }}</td>
+              <td (click)="verRelatorio(rel)" style="cursor: pointer;">
+                {{ rel.relatorio.descricao | slice:0:20 }}...
+              </td>
               <td>{{ rel.orientador}}</td>
               <td>{{ rel.coordenador }}</td>
               <td>{{ rel. status}}</td>
             </tr>
           </tbody>
         </table>
+        <div class="modal fade" id="criarRelatorioModal" tabindex="-1" aria-labelledby="criarRelatorioLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="criarRelatorioLabel" style="font-size: 2rem">Novo Relatório</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body">
+                <form (ngSubmit)="salvarRelatorio()" #relatorioForm="ngForm">
+                  <div class="mb-3">
+                    <label for="horas" class="form-label">Horas Trabalhadas</label>
+                    <div class="mb-3">
+                      <input type="number" id="horas" name="horas" class="form-control"
+                        [(ngModel)]="novoRelatorio.relatorio.horas" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="descricao" class="form-label">Descrição do Relatório</label>
+                      <textarea id="descricao" name="descricao" class="form-control"
+                        [(ngModel)]="novoRelatorio.relatorio.descricao" required></textarea>
+                    </div>
+                  </div>
+                  <div style="display: flex; justify-content: flex-end;">
+                    <button type="submit" class="btn btn-secundary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="verRelatorioModal" tabindex="-1" aria-labelledby="verRelatorioLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="verRelatorioLabel" style="font-size: 2rem">Relatório Completo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body" *ngIf="relatorioSelecionado">
+                <form>
+                  <div class="mb-3">
+                    <label class="form-label"><h1>Horas Trabalhadas: {{ relatorioSelecionado.relatorio.horas }}h</h1></label>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><h1>Descrição do Relatório: </h1>{{ relatorioSelecionado.relatorio.descricao }}</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

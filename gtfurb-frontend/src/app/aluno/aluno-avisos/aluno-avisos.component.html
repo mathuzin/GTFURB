@@ -1,3 +1,51 @@
-<p>
-  aluno-avisos works!
-</p>
+<div class="displayPrincipal" style="display: flex; background-color: #E3EAEE;">
+  <app-nav-rail-aluno></app-nav-rail-aluno>
+  <div class="conteudo">
+    <div>
+      <h1 style="color: Black; font-size: 3rem;">Avisos</h1>
+      <div class="card" style="margin-top: 2%; overflow: hidden;">
+        <table class="table table-hover" style="border-radius: 12px;" >
+          <thead>
+            <tr style="height: 7vh; background-color: 9A9EA5; align-items: top;">
+              <th scope="col" style="vertical-align: top;">Assunto</th>
+              <th scope="col" style="vertical-align: top;">Descrição</th>
+              <th scope="col" style="vertical-align: top;">Data de publicação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let aviso of avisos" (click)="abrirAviso(aviso)">
+              <th scope="row">{{ aviso.assunto}}</th>
+              <td>{{ aviso.descricao}}</td>
+              <td>{{ aviso.data}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="modal fade" id="verAvisoModal" tabindex="-1" aria-labelledby="verAvisoLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="verAvisoLabel" style="font-size: 2rem">Aviso Completo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body" *ngIf="avisoSelecionado">
+                <form>
+                  <div class="mb-3">
+                    <label class="form-label"><h1>Assunto: {{ avisoSelecionado.assunto }}</h1></label>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><h1>Descrição do Aviso: </h1>{{ avisoSelecionado.descricao }}</label>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><h1>Data de publicacao: {{ avisoSelecionado.data}}</h1></label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
