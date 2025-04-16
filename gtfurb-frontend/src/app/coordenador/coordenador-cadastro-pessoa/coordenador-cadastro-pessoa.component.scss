@@ -36,13 +36,21 @@
   padding: 2rem;
   border-radius: 8px;
   width: 90%;
-  max-width: 500px;
+  max-height: 700px;
+  max-width: 900px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.inputsNomeEmail {
+  display: block;
+  width: 100%;
 }
 
 .form-group {
   position: relative;
   margin-bottom: 3.5vh;
+  width: 80%;
+  max-width: 500px;
 }
 
 .form-group > label {
@@ -163,7 +171,7 @@ select:focus {
   background-color: white;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: 0.3s ease;
   color: #1976d2;
