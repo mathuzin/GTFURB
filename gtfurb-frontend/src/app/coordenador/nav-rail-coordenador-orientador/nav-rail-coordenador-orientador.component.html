@@ -1,56 +1,142 @@
-<div class="navRailOrientador" [ngClass]="{ 'expandida': navExpandida }">
+<div class="navRailCoordenador" [ngClass]="{ expandida: navExpandida }">
   <ul class="nav flex-column">
     <li>
-      <a class="nav-link">
+      <a class="nav-img-link">
         <div class="d-flex-center">
-          <img src="assets/cardapioBotao.png" class="imgCardapio" (click)="toggleNav()">
+          <img
+            src="assets/cardapioBotao.png"
+            class="imgCardapio"
+            (click)="toggleNav()"
+          />
         </div>
       </a>
     </li>
-  <li style="margin-bottom: 50px;"></li>
+
+    <li style="margin-bottom: 50px"></li>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="'/coordenador'">
-        <img class="imgIcon" src="assets/homeBotao.png">
+        <img class="imgIcon" src="assets/homeBotao.png" />
         <span class="nav-text" *ngIf="navExpandida">Inicio</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" (click)="coordenadorExpandido = !coordenadorExpandido">
-        <img class="imgIcon" src="assets/coordenador.png">
-        <span class="nav-text" *ngIf="navExpandida">Coordenador</span>
+      <a class="nav-link" (click)="adicionarExpandido = !adicionarExpandido">
+        <img class="imgIcon" src="assets/adicionar.png" />
+        <span class="nav-text" *ngIf="navExpandida">Cadastrar</span>
+        <img
+          class="ImgSeta"
+          src="assets/seta.png"
+          *ngIf="navExpandida"
+          [ngClass]="{ rotacionada: !adicionarExpandido }"
+        />
       </a>
-      <ul *ngIf="coordenadorExpandido && navExpandida" class="nav flex-column sub-menu">
+
+      <ul
+        *ngIf="adicionarExpandido && navExpandida"
+        class="nav flex-column sub-menu"
+      >
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/coordenador/relatorios'">
-            <img class="imgIcon" src="assets/relatoriosBotao.png">
-            <span class="nav-text">Relatórios</span>
-          </a>
+          <div class="sub-item">
+            <a class="nav-link" [routerLink]="'/coordenador/cadastro-pessoa'">
+              <img class="imgIcon" src="assets/pessoa.png" />
+              <span class="nav-text">Pessoa</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul
+        *ngIf="adicionarExpandido && navExpandida"
+        class="nav flex-column sub-menu"
+      >
+        <li class="nav-item">
+          <div class="sub-item">
+            <a class="nav-link" [routerLink]="'/coordenador/cadastro-turma'">
+              <img class="imgIcon" src="assets/grupo.png" />
+              <span class="nav-text">Turma</span>
+            </a>
+          </div>
         </li>
       </ul>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" (click)="coordenadorOrientadorExpandido = !coordenadorOrientadorExpandido">
-        <img class="imgIcon" src="assets/orientador.png">
-        <span class="nav-text" *ngIf="navExpandida">Orientador</span>
+      <a
+        class="nav-link"
+        (click)="coordenadorExpandido = !coordenadorExpandido"
+      >
+        <img class="imgIcon" src="assets/coordenador.png" />
+        <span class="nav-text" *ngIf="navExpandida">Coordenador</span>
+        <img
+          class="ImgSeta"
+          src="assets/seta.png"
+          *ngIf="navExpandida"
+          [ngClass]="{ rotacionada: !coordenadorExpandido }"
+        />
       </a>
-      <ul *ngIf="coordenadorOrientadorExpandido && navExpandida" class="nav flex-column sub-menu">
+      <ul
+        *ngIf="coordenadorExpandido && navExpandida"
+        class="nav flex-column sub-menu"
+      >
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/coordenador/orientador/relatorios'">
-            <img class="imgIcon" src="assets/relatoriosBotao.png">
-            <span class="nav-text">Relatórios</span>
-          </a>
+          <div class="sub-item">
+            <a class="nav-link" [routerLink]="'/coordenador/relatorios'">
+              <img class="imgIcon" src="assets/relatoriosBotao.png" />
+              <span class="nav-text">Relatórios</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        (click)="
+          coordenadorOrientadorExpandido = !coordenadorOrientadorExpandido
+        "
+      >
+        <img class="imgIcon" src="assets/orientador.png" />
+        <span class="nav-text" *ngIf="navExpandida">Orientador</span>
+        <img
+          class="ImgSeta"
+          src="assets/seta.png"
+          *ngIf="navExpandida"
+          [ngClass]="{ rotacionada: !coordenadorOrientadorExpandido }"
+        />
+      </a>
+      <ul
+        *ngIf="coordenadorOrientadorExpandido && navExpandida"
+        class="nav flex-column sub-menu"
+      >
+        <li class="nav-item">
+          <div class="sub-item">
+            <a
+              class="nav-link"
+              [routerLink]="'/coordenador/orientador/relatorios'"
+            >
+              <img class="imgIcon" src="assets/relatoriosBotao.png" />
+              <span class="nav-text">Relatórios</span>
+            </a>
+          </div>
         </li>
       </ul>
     </li>
 
     <li class="nav-item">
       <a class="nav-link" [routerLink]="'/coordenador/avisos'">
-        <img class="imgIcon" src="assets/avisosBotao.png">
+        <img class="imgIcon" src="assets/avisosBotao.png" />
         <span class="nav-text" *ngIf="navExpandida">Avisos</span>
       </a>
     </li>
-  </ul>
-</div>
 
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="'/coordenador/emails-enviados'">
+        <img class="imgIcon" src="assets/email.png" />
+        <span class="nav-text" *ngIf="navExpandida">Emails Enviados</span>
+      </a>
+    </li>
+  </ul>
+  <img class="furb-img" src="assets/furbLogo.png" *ngIf="navExpandida" />
+</div>
