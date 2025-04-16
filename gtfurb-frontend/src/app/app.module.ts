@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoginModule } from './login/login.module';
+import { FormsModule } from '@angular/forms';
+import { AlunoModule } from './aluno/aluno.module';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { LoginModule } from './login/login.module';
     IonicModule.forRoot(),
     IonicModule.forRoot({}),
     LoginModule,
+    AlunoModule,
+    FormsModule
   ]
   ,
   providers: [],
