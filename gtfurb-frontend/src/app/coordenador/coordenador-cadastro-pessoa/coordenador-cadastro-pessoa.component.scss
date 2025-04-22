@@ -159,6 +159,15 @@ select:focus {
   opacity: 0.5;
 }
 
+.modal-custom small {
+  font-size: 0.82em;
+  color: #000;
+}
+
+.span-coordenador{
+  height: 5em;
+}
+
 .cursoContainer {
   display: flex;
   gap: 1rem;
@@ -186,4 +195,11 @@ select:focus {
   color: white;
   border-color: #1976d2;
   box-shadow: 0 0 10px rgba(25, 118, 210, 0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
 }

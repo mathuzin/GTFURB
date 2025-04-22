@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-rail-coordenador-orientador',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-rail-coordenador-orientador.component.scss'],
 })
 export class NavRailCoordenadorOrientadorComponent implements OnInit {
-  constructor() {}
+  constructor(public router: Router) {}
 
   ngOnInit() {}
 
@@ -15,7 +16,6 @@ export class NavRailCoordenadorOrientadorComponent implements OnInit {
   coordenadorExpandido = false;
   coordenadorOrientadorExpandido = false;
   adicionarExpandido = false;
-
 
   toggleNav() {
     this.navExpandida = !this.navExpandida;
@@ -28,8 +28,20 @@ export class NavRailCoordenadorOrientadorComponent implements OnInit {
       this.coordenadorOrientadorExpandido = false;
     }
 
-    if (!this.navExpandida){
+    if (!this.navExpandida) {
       this.adicionarExpandido = false;
     }
+  }
+
+  isFilhoCoordenadorAtivo(): boolean {
+    return this.router.url.includes('/coordenador/relatorios');
+  }
+
+  isFilhoOrientadorAtivo(): boolean {
+    return this.router.url.includes('/coordenador/orientador/relatorios');
+  }
+
+  isFilhoCadastrarAtivo(): boolean {
+    return this.router.url.startsWith('/coordenador/cadastro-');
   }
 }
