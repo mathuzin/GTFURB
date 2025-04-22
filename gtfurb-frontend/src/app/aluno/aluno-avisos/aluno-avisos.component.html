@@ -1,7 +1,7 @@
 <div class="displayPrincipal" style="display: flex; background-color: #E3EAEE;">
   <app-nav-rail-aluno></app-nav-rail-aluno>
   <div class="conteudo">
-    <div>
+    <div class="conteudo-main">
       <h1 style="color: Black; font-size: 3rem;">Avisos</h1>
       <div class="card" style="margin-top: 2%; overflow: hidden;">
         <table class="table table-hover" style="border-radius: 12px;" >
@@ -14,7 +14,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let aviso of avisos" (click)="abrirAviso(aviso)">
-              <th scope="row">{{ aviso.assunto}}</th>
+              <th scope="row" style="cursor: pointer">{{ aviso.assunto}}</th>
               <td>{{ aviso.descricao}}</td>
               <td>{{ aviso.data}}</td>
             </tr>
@@ -45,6 +45,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="footer-wrapper">
+      <app-footer-gtfurb></app-footer-gtfurb>
     </div>
   </div>
 </div>

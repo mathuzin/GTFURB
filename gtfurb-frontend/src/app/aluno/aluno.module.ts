@@ -7,6 +7,7 @@ import { AlunoRelatorioComponent } from './aluno-relatorio/aluno-relatorio.compo
 import { AlunoAvisosComponent } from './aluno-avisos/aluno-avisos.component';
 import { NavRailAlunoComponent } from './nav-rail-aluno/nav-rail-aluno.component';
 import { FormsModule } from '@angular/forms';
+import { FooterGtfurbComponent } from './footer-gtfurb/footer-gtfurb.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     AlunoComponent,
     AlunoRelatorioComponent,
     AlunoAvisosComponent,
-    NavRailAlunoComponent
+    NavRailAlunoComponent,
+    FooterGtfurbComponent
   ],
   imports: [
     CommonModule,

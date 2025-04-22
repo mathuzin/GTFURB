@@ -19,17 +19,5 @@ export class NavRailCoordenadorComponent implements OnInit {
 
   toggleNav() {
     this.navExpandida = !this.navExpandida;
-
-    if (!this.navExpandida) {
-      this.coordenadorExpandido = false;
     }
-
-    if (!this.navExpandida) {
-      this.coordenadorOrientadorExpandido = false;
-    }
-
-    if (!this.navExpandida){
-      this.adicionarExpandido = false;
-    }
-  }
 }

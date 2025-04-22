@@ -13,9 +13,25 @@ export class NavRailAlunoComponent  implements OnInit {
   ngOnInit() {}
 
   navExpandida = false;
+  coordenadorExpandido = false;
+  coordenadorOrientadorExpandido = false;
+  adicionarExpandido = false;
+
 
   toggleNav() {
     this.navExpandida = !this.navExpandida;
+
+    if (!this.navExpandida) {
+      this.coordenadorExpandido = false;
+    }
+
+    if (!this.navExpandida) {
+      this.coordenadorOrientadorExpandido = false;
+    }
+
+    if (!this.navExpandida){
+      this.adicionarExpandido = false;
+    }
   }
 
 }

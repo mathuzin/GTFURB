@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
 // .d-flex-center {
 //   display: flex;
 //   justify-content: center;
@@ -9,7 +13,15 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 5rem;
+  // padding: 5rem;
+}
+
+.conteudo-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  padding: 2rem;
 }
 .displayPrincipal {
   display: flex;
@@ -24,5 +36,20 @@
 #descricao {
   height: 50vh;
 }
+
+// .footer-wrapper {
+//   margin-top: auto;
+//   width: 100%;
+// }
+
+// app-footer-gtfurb {
+//   display: block;
+//   width: 100%;
+// }
+
+tr:hover td {
+  cursor: pointer;
+}
+
 
 
