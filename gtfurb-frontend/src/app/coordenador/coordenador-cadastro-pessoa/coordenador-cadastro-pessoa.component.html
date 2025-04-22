@@ -103,7 +103,6 @@
             >
           </small>
 
-          <div class="curso-turma">
             <div class="curso-container" *ngIf="cargoSelecionado === 'Aluno'">
               <h5>Curso</h5>
 
@@ -126,19 +125,26 @@
               </div>
             </div>
 
-            <div class="dropdown-container" *ngIf="cargoSelecionado === 'Aluno'">
+            <div class="dropdowns">
+            <div
+              class="dropdown-container"
+              *ngIf="cargoSelecionado === 'Aluno'"
+            >
               <label for="select">Escolha uma Turma</label>
-              <div class="dropdown-wrapper">
-                <select id="select"> 
+              <div class="dropdown-wrapper dropdown-turma">
+                <select id="select">
                   <option></option>
+                  <option value="1">Turma 1</option>
+                  <option value="2">Turma 2</option>
+                  <option value="3">Turma 3</option>
                 </select>
+                <span class="dropdown-arrow"></span>
               </div>
             </div>
-          </div>
 
           <div class="dropdown-container" *ngIf="cargoSelecionado === 'Aluno'">
             <label for="select">Escolha um Orientador</label>
-            <div class="dropdown-wrapper">
+            <div class="dropdown-wrapper dropdown-orientador">
               <select id="select">
                 <option></option>
                 <option value="1">Orientador 1</option>
@@ -148,12 +154,13 @@
               <span class="dropdown-arrow"></span>
             </div>
           </div>
+        </div>
 
           <br />
           <br />
 
           <div class="modal-buttons">
-            <button class="btn btn-secondary" (click)="buscarPorFiltroFechar()">
+            <button class="btn btn-secondary" (click)="cadastrarPessoaFechar()">
               Fechar
             </button>
             <button class="btn btn-primary">Adicionar</button>
