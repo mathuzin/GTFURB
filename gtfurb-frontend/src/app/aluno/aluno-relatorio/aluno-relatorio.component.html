@@ -1,7 +1,7 @@
 <div class="displayPrincipal" style="display: flex; background-color: #E3EAEE;">
   <app-nav-rail-aluno></app-nav-rail-aluno>
   <div class="conteudo">
-    <div>
+    <div class="conteudo-main">
       <h1 style="color: Black; font-size: 3rem;">Relatorios Parciais</h1>
       <div style="display: flex">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#criarRelatorioModal">
@@ -26,11 +26,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let rel of relatorios">
-              <th scope="row">{{ rel.titulo}}</th>
+            <tr *ngFor="let rel of relatorios" (click)="verRelatorio(rel)">
+              <th scope="row" style="cursor: pointer">{{ rel.titulo}}</th>
               <td>{{ rel.inicio}}</td>
               <td>{{ rel.termino }}</td>
-              <td (click)="verRelatorio(rel)" style="cursor: pointer;">
+              <td>
                 {{ rel.relatorio.descricao | slice:0:20 }}...
               </td>
               <td>{{ rel.orientador}}</td>
@@ -81,10 +81,14 @@
               <div class="modal-body" *ngIf="relatorioSelecionado">
                 <form>
                   <div class="mb-3">
-                    <label class="form-label"><h1>Horas Trabalhadas: {{ relatorioSelecionado.relatorio.horas }}h</h1></label>
+                    <label class="form-label">
+                      <h1>Horas Trabalhadas: {{ relatorioSelecionado.relatorio.horas }}h</h1>
+                    </label>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label"><h1>Descrição do Relatório: </h1>{{ relatorioSelecionado.relatorio.descricao }}</label>
+                    <label class="form-label">
+                      <h1>Descrição do Relatório: </h1>{{ relatorioSelecionado.relatorio.descricao }}
+                    </label>
                   </div>
                 </form>
               </div>
@@ -92,6 +96,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="footer-wrapper">
+      <app-footer-gtfurb></app-footer-gtfurb>
     </div>
   </div>
 </div>

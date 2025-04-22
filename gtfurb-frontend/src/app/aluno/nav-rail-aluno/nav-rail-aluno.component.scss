@@ -1,42 +1,71 @@
+.furb-img {
+  margin-top: 15em;
+  height: 3em;
+}
+
 .imgIcon {
-  height: 35px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  transition: border 0.2 ease;
+  height: 2.3em;
+  border: 0.15em solid transparent;
+  border-radius: 15%;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
+.nav-img-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.6em;
+  gap: 0.6em;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
 .imgCardapio {
-  height: 25px;
+  height: 2em;
+  padding: 0.5em 0.6em;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
 }
 
 // .imgCardapio:hover {
 //   background-color: #B2BEB5;
 // }
 
-// .nav-link:hover .imgIcon {
-//   background-color: #B2BEB5;
-// }
-
-.nav-link:hover  {
-  background-color: #B2BEB5;
+.nav-link:hover .imgIcon {
+  background-color: #1686d6c7;
   border-radius: 10px;
-  // padding: 5px 8px;
 }
 
-.nav-link.active{
-  // border-color: grey;
-  background-color: #B2BEB5;
+.nav-link:hover .imgIcon,
+.nav-link:hover .nav-text {
+  background-color: #1686d6c7;
   border-radius: 10px;
+}
+// .nav-link:hover  {
+//   background-color: #B2BEB5;
+//   border-radius: 10px;
+//   // padding: 5px 8px;
+// }
+
+.nav-link.active{
+  background-color: #0a3d62;
+  border-radius: 5%;
+  color: white;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0.6em;
+  gap: 0.6em;
+  transition: background-color 0.3s ease;
 }
 
 .navRailAlunos {
   background-color: white;
-  // min-width: 100px;
-  // width: 75px;
-  padding-top: 2rem;
+  padding-top: 2%;
+  width: clamp(5opx, 10vw, 60px);
   overflow: hidden;
   transition: width 0.3s ease;
   height: 100vh;

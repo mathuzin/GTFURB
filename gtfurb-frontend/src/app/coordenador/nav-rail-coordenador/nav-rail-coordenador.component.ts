@@ -19,9 +19,6 @@ export class NavRailCoordenadorComponent implements OnInit {
 
   toggleNav() {
     this.navExpandida = !this.navExpandida;
-
-    if (!this.navExpandida) {
-      this.coordenadorExpandido = false;
     }
 
     if (!this.navExpandida) {
@@ -35,5 +32,9 @@ export class NavRailCoordenadorComponent implements OnInit {
 
   isFilhoCadastrarAtivo(): boolean {
     return this.router.url.startsWith('/coordenador/cadastro-');
+  }
+
+  isFilhoCadastrarAtivo(): boolean {
+    return t
   }
 }

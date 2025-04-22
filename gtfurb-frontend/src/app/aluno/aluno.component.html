@@ -1,33 +1,41 @@
-<div class="displayPrincipal" style="display: flex; background-color: #E3EAEE;">
-<app-nav-rail-aluno></app-nav-rail-aluno>
+<div class="displayPrincipal">
+  <app-nav-rail-aluno></app-nav-rail-aluno>
+
   <div class="conteudo">
-    <img src="assets/GTFURBlogo.png" style="size: 75%">
-    <div class="d-flex justify-content-between gap-3">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title"><b>Relatórios Parciais</b></h4>
-          <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at ultrices nunc. Sed
-            interdum ut purus quis cursus.
-            Sed in interdum elit, sed dignissim elit. Vivamus erat est, ultrices nec volutpat nec, volutpat vel lectus.
-            Donec interdum finibus ipsum, vel sodales nibh.
-          </p>
-          <div style="display: flex; justify-content: flex-end;">
-            <button type="button" class="btn btn-primary">Acessar</button>
+    <div class="conteudo-main">
+      <img src="assets/GTFURBlogo.png" class="logo" alt="Logo GTFURB">
+
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><b>Relatórios Parciais</b></h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis commodo
+              ultrices. Morbi pretium arcu risus, sed eleifend mi ultricies vitae. Duis elementum eleifend ipsum, non
+              faucibus orci luctus et ultrices posuere cubilia curae; </p>
+            <div class="text-end">
+              <button type="button" class="btn btn-primary">Acessar</button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title"><b>Avisos</b></h4>
-          <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at ultrices nunc. Sed
-            interdum ut purus quis cursus.
-            Sed in interdum elit, sed dignissim elit. Vivamus erat est, ultrices nec volutpat nec, volutpat vel lectus.
-            Donec interdum finibus ipsum, vel sodales nibh.
-          </p>
-          <div style="display: flex; justify-content: flex-end;">
-            <button type="button" class="btn btn-primary">Acessar</button>
+
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><b>Avisos</b></h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis commodo
+              ultrices. Morbi pretium arcu risus, sed eleifend mi ultricies vitae. Duis elementum eleifend ipsum, non
+              faucibus orci luctus et ultrices posuere cubilia curae; </p>
+            <div class="text-end">
+              <button type="button" class="btn btn-primary">Acessar</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="footer-wrapper">
+      <app-footer-gtfurb></app-footer-gtfurb>
+    </div>
+
     <router-outlet></router-outlet>
+  </div>
+</div>
