@@ -18,7 +18,7 @@ export class AlunoAvisosComponent implements OnInit {
   avisos = [
     {
       assunto: 'aviso 1',
-      descricao: 'descricao descricao',
+      descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis commodo ultrices. Morbi pretium arcu risus, sed eleifend mi ultricies vitae. Duis elementum eleifend ipsum, non finibus diam aliquam eu. Vestibulum congue libero sed mi rhoncus tempus. Maecenas in mi lorem. Integer laoreet diam rutrum lorem accumsan, ac maximus orci laoreet. Curabitur nulla justo, sagittis a sapien sed, auctor efficitur erat. Cras quam quam, ultrices vel erat sed, vehicula condimentum dolor. Ut volutpat lacus turpis, vitae posuere mi ornare eu. Proin pulvinar venenatis tellus non accumsan. Proin eu orci sollicitudin, interdum dui eget, posuere odio. Curabitur at risus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; ',
       data: '31/12/2025',
     },
     {

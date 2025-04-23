@@ -1,7 +1,13 @@
+html, body {
+  height: 100%;
+  margin: 0;
+
+}
 .furb-img {
   margin-top: 15em;
   height: 3em;
 }
+
 
 .imgIcon {
   height: 2.3em;
@@ -14,7 +20,7 @@
 .nav-img-link {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0.6em;
+  padding: 0.5em 0.6em;
   gap: 0.6em;
   transition: background-color 0.3s ease;
   text-decoration: none;
@@ -28,31 +34,25 @@
   border-radius: 10px;
 }
 
+.imgCardapio:hover {
+  background-color: #1686d6c7;
+}
+
+.navRailAluno.expandida .imgCardapio {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  // margin-left: 13em;
+  position: center;
+}
+
 // .imgCardapio:hover {
 //   background-color: #B2BEB5;
 // }
 
-.nav-link:hover .imgIcon {
-  background-color: #1686d6c7;
-  border-radius: 10px;
-}
-
-.nav-link:hover .imgIcon,
-.nav-link:hover .nav-text {
-  background-color: #1686d6c7;
-  border-radius: 10px;
-}
-// .nav-link:hover  {
+// .nav-link:hover .imgIcon {
 //   background-color: #B2BEB5;
-//   border-radius: 10px;
-//   // padding: 5px 8px;
 // }
 
-.nav-link.active{
-  background-color: #0a3d62;
-  border-radius: 5%;
-  color: white;
-}
 
 .nav-link {
   display: flex;
@@ -62,32 +62,64 @@
   transition: background-color 0.3s ease;
 }
 
-.navRailAlunos {
+.navRailAluno.expandida .nav-link:hover {
+  background-color: #1686d6c7;
+  // border-radius: 60%;
+}
+
+.nav-link:hover .imgIcon {
+  background-color: #1686d6c7;
+  border-radius: 10px;
+}
+
+.nav-link:hover .imgIcon,
+.nav-link:hover .nav-text {
+  filter: brightness(120%);
+}
+
+.nav-link.active {
+  background-color: #0a3d62;
+  border-radius: 5%;
+  color: white;
+}
+
+.navRailAluno {
   background-color: white;
   padding-top: 2%;
-  width: clamp(5opx, 10vw, 60px);
   overflow: hidden;
   transition: width 0.3s ease;
   height: 100vh;
+  width: clamp(50px, 10vw, 60px);
 }
 
-.navRailAlunos.expandida {
-  max-width: 300px;
+.navRailAluno.expandida {
+  width: clamp(200px, 18vw, 300px);
 }
 
 .nav-text {
-  margin-left: 10px;
+  margin-left: 4%;
   white-space: nowrap;
   font-weight: 500;
   color: black;
+  transition: all 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  margin-bottom: 0.2em;
+  opacity: 1;
 }
 
-.d-flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.navRailAluno:not(.expandida) .nav-text {
+  opacity: 0;
+}
+
+.navRailAluno.expandida .imgIcon {
+  background-color: transparent;
+}
+
+.navRailAluno.expandida .imgCardapio {
+  background-color: transparent;
+}
+
+.nav-link.active-link {
+  background-color: #1686d6c7;
 }
 
