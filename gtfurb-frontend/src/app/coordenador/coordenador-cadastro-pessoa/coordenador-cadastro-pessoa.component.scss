@@ -104,7 +104,6 @@
   max-width: 300px;
 }
 
-
 select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -166,7 +165,7 @@ select:focus {
   color: #000;
 }
 
-.span-coordenador{
+.span-coordenador {
   height: 5em;
 }
 
@@ -216,10 +215,45 @@ select:focus {
   min-width: 9rem;
 }
 
-
 .modal-buttons {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.modal-filtro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modal-content-filtro {
+  background: #fff;
+  width: 60%;
+  max-width: 100rem;
+  border-radius: 8px 8px 0 0;
+  padding: 1.5rem;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  animation: subirDoChao 0.3s ease-out forwards;
+}
+
+@keyframes subirDoChao {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

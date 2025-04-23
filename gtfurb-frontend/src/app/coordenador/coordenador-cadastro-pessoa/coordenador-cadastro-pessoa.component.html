@@ -103,29 +103,29 @@
             >
           </small>
 
-            <div class="curso-container" *ngIf="cargoSelecionado === 'Aluno'">
-              <h5>Curso</h5>
+          <div class="curso-container" *ngIf="cargoSelecionado === 'Aluno'">
+            <h5>Curso</h5>
 
-              <div class="cursoContainer">
-                <button
-                  class="curso-button"
-                  [class.selecionado]="cursoSelecionado === 'BCC'"
-                  (click)="selecionarCurso('BCC')"
-                >
-                  Ciências da Computação
-                </button>
+            <div class="cursoContainer">
+              <button
+                class="curso-button"
+                [class.selecionado]="cursoSelecionado === 'BCC'"
+                (click)="selecionarCurso('BCC')"
+              >
+                Ciências da Computação
+              </button>
 
-                <button
-                  class="curso-button"
-                  [class.selecionado]="cursoSelecionado === 'SIS'"
-                  (click)="selecionarCurso('SIS')"
-                >
-                  Sistemas da Informação
-                </button>
-              </div>
+              <button
+                class="curso-button"
+                [class.selecionado]="cursoSelecionado === 'SIS'"
+                (click)="selecionarCurso('SIS')"
+              >
+                Sistemas da Informação
+              </button>
             </div>
+          </div>
 
-            <div class="dropdowns">
+          <div class="dropdowns">
             <div
               class="dropdown-container"
               *ngIf="cargoSelecionado === 'Aluno'"
@@ -142,19 +142,22 @@
               </div>
             </div>
 
-          <div class="dropdown-container" *ngIf="cargoSelecionado === 'Aluno'">
-            <label for="select">Escolha um Orientador</label>
-            <div class="dropdown-wrapper dropdown-orientador">
-              <select id="select">
-                <option></option>
-                <option value="1">Orientador 1</option>
-                <option value="2">Orientador 2</option>
-                <option value="3">Orientador 3</option>
-              </select>
-              <span class="dropdown-arrow"></span>
+            <div
+              class="dropdown-container"
+              *ngIf="cargoSelecionado === 'Aluno'"
+            >
+              <label for="select">Escolha um Orientador</label>
+              <div class="dropdown-wrapper dropdown-orientador">
+                <select id="select">
+                  <option></option>
+                  <option value="1">Orientador 1</option>
+                  <option value="2">Orientador 2</option>
+                  <option value="3">Orientador 3</option>
+                </select>
+                <span class="dropdown-arrow"></span>
+              </div>
             </div>
           </div>
-        </div>
 
           <br />
           <br />
@@ -168,9 +171,29 @@
         </div>
       </div>
 
-      <div class="modal-custom" *ngIf="telaFiltro">
-        <div class="modal-content-custom">
-          <h5>Pesquisar por Filtros</h5>
+      <div class="modal-filtro" *ngIf="telaFiltro">
+        <div class="modal-content-filtro">
+          <h1 style="color: black">Pesquisar por Filtros</h1>
+          <br />
+          <br />
+
+          <div class="opcoes-filtro">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#000000"
+            >
+              <path
+                d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
+              />
+            </svg>
+            <h5>Cargo</h5>
+          </div>
+
+          <br />
+          <br />
           <div class="modal-buttons">
             <button class="btn btn-secondary" (click)="buscarPorFiltroFechar()">
               Fechar

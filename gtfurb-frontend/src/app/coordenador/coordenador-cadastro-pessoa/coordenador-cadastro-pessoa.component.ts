@@ -33,6 +33,10 @@ export class CoordenadorCadastroPessoaComponent implements OnInit {
 
   cadastrarPessoaFechar() {
     this.telaCadastro = false;
+    this.cargoSelecionado = '';
+    this.coordenadorAcumula = '';
+    this.cursoSelecionado = '';
+    this.form.reset();
   }
 
   buscarPorFiltroAbrir() {
