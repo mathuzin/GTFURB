@@ -20,6 +20,12 @@ export class CoordenadorCadastroPessoaComponent implements OnInit {
 
   cursoSelecionado: string = '';
 
+  mostrarCargoOpcoesFiltro = false;
+  mostrarCursoOpcoesFiltro = false;
+  mostrarModalFiltro = true;
+
+  isSelected = false;
+
   ngOnInit() {
     this.form = new FormGroup({
       nome: new FormControl(''),
@@ -68,6 +74,21 @@ export class CoordenadorCadastroPessoaComponent implements OnInit {
 
   selecionarCurso(curso: string) {
     this.cursoSelecionado = curso;
+  }
+
+  selecionarCargoFiltro() {
+    this.mostrarCargoOpcoesFiltro = !this.mostrarCargoOpcoesFiltro;
+    this.mostrarCursoOpcoesFiltro = false;
+  }
+
+  selecionarCursoFiltro() {
+    this.isSelected = !this.isSelected;
+    this.mostrarCursoOpcoesFiltro = !this.mostrarCursoOpcoesFiltro;
+    this.mostrarCargoOpcoesFiltro = false;
+  }
+
+  selecionarOpcaoFinalFiltro() {
+    this.mostrarModalFiltro = false;
   }
 
   relatorios = [
