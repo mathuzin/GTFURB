@@ -44,12 +44,16 @@ export class CoordenadorCadastroPessoaComponent implements OnInit {
   }
 
   selecionarCargo(cargo: string) {
-    if (cargo === 'Coordenador') {
+    if (cargo === 'Orientador') {
       if (this.cargoSelecionado === 'Coordenador') {
-        this.coordenadorAcumula =
-          this.coordenadorAcumula === 'Orientador' ? '' : 'Orientador';
+        if (this.coordenadorAcumula === 'Orientador') {
+          this.cargoSelecionado = 'Orientador';
+          this.coordenadorAcumula = '';
+        } else {
+          this.coordenadorAcumula = 'Orientador';
+        }
       } else {
-        this.cargoSelecionado = 'Coordenador';
+        this.cargoSelecionado = 'Orientador';
         this.coordenadorAcumula = '';
       }
     } else {

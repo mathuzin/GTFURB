@@ -4,14 +4,15 @@
       <a class="nav-img-link">
         <div class="d-flex-center">
           <img
-            class="furb-img"
-            src="assets/furbLogo.png"
-            *ngIf="navExpandida"
-          />
-          <img
             src="assets/cardapioBotao.png"
             class="imgCardapio"
             (click)="toggleNav()"
+          />
+
+          <img
+            class="furb-img"
+            src="assets/furbLogo.png"
+            *ngIf="navExpandida"
           />
         </div>
       </a>
@@ -19,14 +20,23 @@
 
     <li style="margin-bottom: 50px"></li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="'/coordenador'">
+      <a
+        class="nav-link"
+        [routerLink]="'/coordenador'"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <img class="imgIcon" src="assets/homeBotao.png" />
         <span class="nav-text" *ngIf="navExpandida">Inicio</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" (click)="adicionarExpandido = !adicionarExpandido">
+      <a
+        class="nav-link"
+        (click)="adicionarExpandido = !adicionarExpandido"
+        [ngClass]="{ 'active-parent': isFilhoCadastrarAtivo() }"
+      >
         <img class="imgIcon" src="assets/adicionar.png" />
         <span class="nav-text" *ngIf="navExpandida">Cadastrar</span>
         <img
@@ -43,7 +53,12 @@
       >
         <li class="nav-item">
           <div class="sub-item">
-            <a class="nav-link" [routerLink]="'/coordenador/cadastro-pessoa'">
+            <a
+              class="nav-link"
+              [routerLink]="'/coordenador/cadastro-pessoa'"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
               <img class="imgIcon" src="assets/pessoa.png" />
               <span class="nav-text">Pessoa</span>
             </a>
@@ -57,7 +72,12 @@
       >
         <li class="nav-item">
           <div class="sub-item">
-            <a class="nav-link" [routerLink]="'/coordenador/cadastro-turma'">
+            <a
+              class="nav-link"
+              [routerLink]="'/coordenador/cadastro-turma'"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
               <img class="imgIcon" src="assets/grupo.png" />
               <span class="nav-text">Turma</span>
             </a>
@@ -70,6 +90,7 @@
       <a
         class="nav-link"
         (click)="coordenadorExpandido = !coordenadorExpandido"
+        [ngClass]="{ 'active-parent': isFilhoCoordenadorAtivo() }"
       >
         <img class="imgIcon" src="assets/coordenador.png" />
         <span class="nav-text" *ngIf="navExpandida">Coordenador</span>
@@ -86,7 +107,12 @@
       >
         <li class="nav-item">
           <div class="sub-item">
-            <a class="nav-link" [routerLink]="'/coordenador/relatorios'">
+            <a
+              class="nav-link"
+              [routerLink]="'/coordenador/relatorios'"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
               <img class="imgIcon" src="assets/relatoriosBotao.png" />
               <span class="nav-text">Relatórios</span>
             </a>
@@ -101,6 +127,7 @@
         (click)="
           coordenadorOrientadorExpandido = !coordenadorOrientadorExpandido
         "
+        [ngClass]="{ 'active-parent': isFilhoOrientadorAtivo() }"
       >
         <img class="imgIcon" src="assets/orientador.png" />
         <span class="nav-text" *ngIf="navExpandida">Orientador</span>
@@ -120,6 +147,8 @@
             <a
               class="nav-link"
               [routerLink]="'/coordenador/orientador/relatorios'"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
             >
               <img class="imgIcon" src="assets/relatoriosBotao.png" />
               <span class="nav-text">Relatórios</span>
@@ -130,14 +159,24 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="'/coordenador/avisos'">
+      <a
+        class="nav-link"
+        [routerLink]="'/coordenador/avisos'"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <img class="imgIcon" src="assets/avisosBotao.png" />
         <span class="nav-text" *ngIf="navExpandida">Avisos</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="'/coordenador/emails-enviados'">
+      <a
+        class="nav-link"
+        [routerLink]="'/coordenador/emails-enviados'"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <img class="imgIcon" src="assets/email.png" />
         <span class="nav-text" *ngIf="navExpandida">Emails Enviados</span>
       </a>

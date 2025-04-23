@@ -1,5 +1,6 @@
 .furb-img {
-  height: 3em;
+  height: 2.5em;
+  margin-left: 7em;
 }
 
 .d-flex-center {
@@ -40,7 +41,6 @@
 .navRailCoordenador.expandida .imgCardapio {
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 6em;
 }
 
 // .imgCardapio:hover {
@@ -73,12 +73,10 @@
 
 .navRailCoordenador.expandida .nav-link:hover {
   background-color: #1686d6c7;
-  border-radius: 60px;
 }
 
-.nav-link:hover .imgIcon {
+.navRailCoordenador:not(.expandida) .nav-link:hover .imgIcon {
   background-color: #1686d6c7;
-  border-radius: 10px;
 }
 
 .nav-link:hover .imgIcon,
@@ -86,10 +84,12 @@
   filter: brightness(120%);
 }
 
-.nav-link.active {
-  background-color: #0a3d62;
-  border-radius: 5%;
-  color: white;
+.nav-link.active-link {
+  background-color: #1686d6c7;
+}
+
+.active-parent {
+  background-color: #1686d6c7;
 }
 
 .navRailCoordenador {

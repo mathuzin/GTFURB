@@ -39,6 +39,7 @@
   max-height: 700px;
   max-width: 900px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
 }
 
 .inputsNomeEmail {
@@ -103,6 +104,7 @@
   max-width: 300px;
 }
 
+
 select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -159,6 +161,15 @@ select:focus {
   opacity: 0.5;
 }
 
+.modal-custom small {
+  font-size: 0.82em;
+  color: #000;
+}
+
+.span-coordenador{
+  height: 5em;
+}
+
 .cursoContainer {
   display: flex;
   gap: 1rem;
@@ -186,4 +197,29 @@ select:focus {
   color: white;
   border-color: #1976d2;
   box-shadow: 0 0 10px rgba(25, 118, 210, 0.3);
+}
+
+.dropdowns {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.dropdown-orientador {
+  flex: 2 1 0;
+  min-width: 20rem;
+}
+
+.dropdown-turma {
+  flex: 1 1 0;
+  min-width: 9rem;
+}
+
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
 }

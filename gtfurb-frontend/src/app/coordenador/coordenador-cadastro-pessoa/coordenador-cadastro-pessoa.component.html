@@ -96,32 +96,55 @@
               Coordenador
             </button>
           </div>
+          <small *ngIf="cargoSelecionado === 'Coordenador'">
+            <span class="span-coordenador"
+              >Se desejar que o Coordenador também exerça a função de
+              Orientador, selecione a opção 'Orientador'.</span
+            >
+          </small>
 
-          <div class="curso-container" *ngIf="cargoSelecionado === 'Aluno'">
-            <h5>Curso</h5>
+            <div class="curso-container" *ngIf="cargoSelecionado === 'Aluno'">
+              <h5>Curso</h5>
 
-            <div class="cursoContainer">
-              <button
-                class="curso-button"
-                [class.selecionado]="cursoSelecionado === 'BCC'"
-                (click)="selecionarCurso('BCC')"
-              >
-                Ciências da Computação
-              </button>
+              <div class="cursoContainer">
+                <button
+                  class="curso-button"
+                  [class.selecionado]="cursoSelecionado === 'BCC'"
+                  (click)="selecionarCurso('BCC')"
+                >
+                  Ciências da Computação
+                </button>
 
-              <button
-                class="curso-button"
-                [class.selecionado]="cursoSelecionado === 'SIS'"
-                (click)="selecionarCurso('SIS')"
-              >
-                Sistemas da Informação
-              </button>
+                <button
+                  class="curso-button"
+                  [class.selecionado]="cursoSelecionado === 'SIS'"
+                  (click)="selecionarCurso('SIS')"
+                >
+                  Sistemas da Informação
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div class="dropdown-container">
+            <div class="dropdowns">
+            <div
+              class="dropdown-container"
+              *ngIf="cargoSelecionado === 'Aluno'"
+            >
+              <label for="select">Escolha uma Turma</label>
+              <div class="dropdown-wrapper dropdown-turma">
+                <select id="select">
+                  <option></option>
+                  <option value="1">Turma 1</option>
+                  <option value="2">Turma 2</option>
+                  <option value="3">Turma 3</option>
+                </select>
+                <span class="dropdown-arrow"></span>
+              </div>
+            </div>
+
+          <div class="dropdown-container" *ngIf="cargoSelecionado === 'Aluno'">
             <label for="select">Escolha um Orientador</label>
-            <div class="dropdown-wrapper">
+            <div class="dropdown-wrapper dropdown-orientador">
               <select id="select">
                 <option></option>
                 <option value="1">Orientador 1</option>
@@ -131,22 +154,29 @@
               <span class="dropdown-arrow"></span>
             </div>
           </div>
+        </div>
 
           <br />
           <br />
 
-          <button class="btn btn-secondary" (click)="cadastrarPessoaFechar()">
-            Fechar
-          </button>
+          <div class="modal-buttons">
+            <button class="btn btn-secondary" (click)="cadastrarPessoaFechar()">
+              Fechar
+            </button>
+            <button class="btn btn-primary">Adicionar</button>
+          </div>
         </div>
       </div>
 
       <div class="modal-custom" *ngIf="telaFiltro">
         <div class="modal-content-custom">
           <h5>Pesquisar por Filtros</h5>
-          <button class="btn btn-secondary" (click)="buscarPorFiltroFechar()">
-            Fechar
-          </button>
+          <div class="modal-buttons">
+            <button class="btn btn-secondary" (click)="buscarPorFiltroFechar()">
+              Fechar
+            </button>
+            <button class="btn btn-primary">Pesquisar</button>
+          </div>
         </div>
       </div>
 
